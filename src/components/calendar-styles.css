@@ -1,0 +1,71 @@
+/* Basic calendar styles */
+.calendar-wrapper {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+/* Simple calendar styles - avoid complex selectors that might not exist */
+.calendar-wrapper {
+  padding: 0;
+  background-color: white;
+  border-radius: 0.5rem;
+  min-width: 280px;
+}
+
+/* Keep it simple and minimal */
+.rdp {
+  margin: 0;
+}
+
+/* Make sure the calendar fits in the popover */
+.rdp-months {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rdp-month {
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix for possible spacing issues */
+.rdp-day {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.rdp-day_selected {
+  background-color: var(--rdp-accent-color);
+  color: white;
+}
+
+.rdp-day_selected:hover {
+  background-color: var(--rdp-accent-color-dark);
+}
+
+.rdp-day_today {
+  background-color: var(--rdp-background-color);
+  font-weight: bold;
+}
+
+/* Fix for popover positioning */
+.popover-content {
+  z-index: 100;
+  width: auto !important;
+}
+
+/* Make sure the calendar is visible and all days are aligned */
+.rdp-table {
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 2px;
+  width: 100%;
+}
+
+.rdp-head_cell,
+.rdp-cell {
+  text-align: center;
+}

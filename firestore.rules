@@ -1,0 +1,59 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {    // Users can read/write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Users can read/write their own documents subcollection
+      match /documents/{documentId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Users can read/write their own course progress
+      match /courseProgress/{courseId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+    
+    // Users can read/write their own profile document
+    match /userProfiles/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }    // Users can read/write their own health metrics
+    match /userHealthMetrics/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Users can read/write their own wellness metrics (psychological metrics)
+    match /wellnessMetrics/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+      // Booking system rules
+    match /bookings/{bookingId} {
+      // Users can read all bookings (needed for slot availability checking)
+      allow read: if request.auth != null;
+      // Users can create bookings (data validation happens in code)
+      allow create: if request.auth != null;
+      // Users can only update/delete their own bookings
+      allow update: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }      // Booking slots rules (for availability checking)
+    match /bookingSlots/{slotId} {
+      // Anyone authenticated can read slot availability
+      allow read: if request.auth != null;
+      // Only authenticated users can create/update/delete slots
+      allow write: if request.auth != null;
+    }
+    
+    // Allow public read access to certain collections (if needed)
+    // match /publicData/{document} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null;
+    // }
+    
+    // Deny all other operations
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
