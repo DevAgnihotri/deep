@@ -11,10 +11,8 @@ const personalityTestData = [
       "46-50",
       "51-55",
       "56-60",
-      "61+",
-    ],
+      "61+",    ],
   },
-  { question: "What is your gender?", answer: ["Female", "Male"] },
   {
     question: "What is your educational qualification?",
     answer: ["Graduate", "HSC", "Post Graduate", "SSC"],

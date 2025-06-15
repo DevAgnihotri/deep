@@ -21,14 +21,9 @@ export const PersonalityQuiz = ({ onComplete }: PersonalityQuizProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Personality/Lifestyle Assessment Questions (from depr app)
-  const questionsData = [
-    {
+  const questionsData = [    {
       question: "What is your age range (in years)?",
       options: ["16-20", "21-25", "26-30", "31-35", "36-40", "41-45", "46-50", "51-55", "56-60", "61+"]
-    },
-    {
-      question: "What is your gender?",
-      options: ["Female", "Male"]
     },
     {
       question: "What is your educational qualification?",
