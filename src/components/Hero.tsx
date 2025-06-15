@@ -21,19 +21,19 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <div className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full text-green-700 text-sm font-medium mb-8">
-            <img src="/logo.png" alt="ALL&nbsp;IN&nbsp;A Logo" className="w-4 h-4 mr-2 object-contain" />
-            Welcome to ALL&nbsp;IN&nbsp;A - Your Mental Health Platform
+            <img src="/logo.png" alt="Mindhaven Logo" className="w-4 h-4 mr-2 object-contain" />
+            Welcome to Mindhaven - Your Mental Health Platform
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            <span className="text-green-600">ALL&nbsp;IN&nbsp;A</span> - Find Your Path to
+            <span className="text-green-600">Mindhaven</span> - Find Your Path to
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
               {" "}Mental Wellness
             </span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            ALL&nbsp;IN&nbsp;A provides personalized therapy, mindful content, and AI-powered support
+            Mindhaven provides personalized therapy, mindful content, and AI-powered support
             tailored to your unique mental health journey.
           </p>
           
@@ -71,7 +71,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
         </div>
         {/* Health Metrics Section */}
         <div id="wellness-metrics" className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">ALL&nbsp;IN&nbsp;A Psychological Metrics</h2>
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Mindhaven Psychological Metrics</h2>
           <WellnessMetrics />
         </div>
         
@@ -80,7 +80,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mb-4">
               <Users className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">ALL&nbsp;IN&nbsp;A Expert Therapists</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Mindhaven Expert Therapists</h3>
             <p className="text-gray-600 text-center">Connect with licensed mental health professionals through our platform</p>
           </div>
           
@@ -89,7 +89,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
               <Sparkles className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Content</h3>
-            <p className="text-gray-600 text-center">ALL&nbsp;IN&nbsp;A curates resources based on your unique needs</p>
+            <p className="text-gray-600 text-center">Mindhaven curates resources based on your unique needs</p>
           </div>
           
           <div className="flex flex-col items-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
@@ -97,7 +97,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
               <Shield className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Safe & Secure</h3>
-            <p className="text-gray-600 text-center">ALL&nbsp;IN&nbsp;A prioritizes your privacy and data security</p>
+            <p className="text-gray-600 text-center">Mindhaven prioritizes your privacy and data security</p>
           </div>
         </div>
       </div>

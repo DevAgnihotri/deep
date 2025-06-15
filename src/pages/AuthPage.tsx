@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, db, googleProvider } from "@/lib/firebase";
+import { auth, db, googleProvider, githubProvider } from "@/lib/firebase";
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   signInWithPopup, 
   signInWithRedirect,
-  getRedirectResult,
-  GithubAuthProvider 
+  getRedirectResult
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import "./AuthPage.css";
-
-const githubProvider = new GithubAuthProvider();
 
 export default function AuthPage() {
   const [isActive, setIsActive] = useState(false);
@@ -167,10 +164,10 @@ export default function AuthPage() {
           <form onSubmit={handleLoginSubmit}>            <div className="flex items-center justify-center mb-6">
               <img 
                 src="/logo.png" 
-                alt="ALL&nbsp;IN&nbsp;A Logo" 
+                alt="Mindhaven Logo" 
                 className="w-12 h-12 object-contain mr-3"
               />
-              <h1 className="text-2xl font-bold">ALL&nbsp;IN&nbsp;A Login</h1>
+              <h1 className="text-2xl font-bold">Mindhaven Login</h1>
             </div>
             <div className="input-box">
               <input
@@ -216,11 +213,10 @@ export default function AuthPage() {
         </div>
 
         {/* Register Form */}        <div className="form-box register">
-          <form onSubmit={handleRegisterSubmit}>
-            <div className="flex items-center justify-center mb-6">
+          <form onSubmit={handleRegisterSubmit}>            <div className="flex items-center justify-center mb-6">
               <img 
                 src="/logo.png" 
-                alt="ALL&nbsp;IN&nbsp;A Logo" 
+                alt="Mindhaven Logo" 
                 className="w-12 h-12 object-contain mr-3"
               />
               <h1 className="text-2xl font-bold">Registration</h1>
@@ -278,14 +274,14 @@ export default function AuthPage() {
 
         {/* Toggle Box */}
         <div className="toggle-box">          <div className="toggle-panel toggle-left">            <h1>Hello, and Welcome!</h1>
-            <p>Don't have an ALL&nbsp;IN&nbsp;A account?</p>
+            <p>Don't have a Mindhaven account?</p>
             <button className="btn register-btn" onClick={() => setIsActive(true)}>
               Register
             </button>
           </div>
           <div className="toggle-panel toggle-right">
             <h1>Welcome Back!</h1>
-            <p>Already have an ALL&nbsp;IN&nbsp;A account?</p>
+            <p>Already have a Mindhaven account?</p>
             <button className="btn login-btn" onClick={() => setIsActive(false)}>
               Login
             </button></div>

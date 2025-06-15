@@ -37,7 +37,7 @@ import {
 	EarlyWarningChart
 } from "../components/charts";
 
-// Maternal Mental Health Crisis Statistics
+// Women's Mental Health Crisis Statistics
 const crisisStats = [
 	{ 
 		number: "970M+", 
@@ -47,65 +47,65 @@ const crisisStats = [
 		description: "Mental health crisis affects nearly 1 billion people globally"
 	},
 	{ 
-		number: "1 in 7", 
-		text: "New mothers experience postpartum depression",
-		icon: Baby,
+		number: "2x", 
+		text: "Women are twice as likely to experience depression",
+		icon: Heart,
 		color: "from-purple-400 to-violet-500",
-		description: "Maternal mental health crisis touches millions of families"
+		description: "Women face unique mental health challenges requiring specialized care"
 	},
 	{ 
-		number: "Only 15%", 
-		text: "Of mothers with PPD receive proper treatment",
+		number: "75%", 
+		text: "Of women don't receive adequate mental health support",
 		icon: Stethoscope,
 		color: "from-blue-400 to-cyan-500",
-		description: "Critical treatment gap leaves mothers without support"
+		description: "Critical treatment gap leaves women without proper care"
 	},
 	{ 
-		number: "$32,000", 
-		text: "Average cost per untreated maternal mental health case",
+		number: "1 in 3", 
+		text: "Women experience anxiety disorders in their lifetime",
 		icon: TrendingUp,
 		color: "from-amber-400 to-orange-500",
-		description: "Economic and human toll of untreated maternal conditions"
+		description: "Anxiety affects millions of women across all life stages"
 	},
 ];
 
-// Revolutionary Maternal Mental Health Solutions
+// Comprehensive Women's Mental Health Solutions
 const solutions = [
 	{
-		title: "Specialized Maternal Care",
-		desc: "Evidence-based treatment for postpartum depression, pregnancy anxiety, and perinatal mood disorders by certified specialists.",
-		icon: Baby,
+		title: "Specialized Women's Care",
+		desc: "Evidence-based treatment for depression, anxiety, trauma, and women's unique mental health challenges by certified specialists.",
+		icon: Heart,
 		gradient: "from-rose-400 to-pink-500",
-		features: ["Postpartum Depression Treatment", "Pregnancy Anxiety Support", "Perinatal Mood Disorders", "Birth Trauma Recovery"]
+		features: ["Depression Treatment", "Anxiety Support", "Trauma Recovery", "Life Transition Support"]
 	},
 	{
 		title: "24/7 Support",
-		desc: "Immediate help when you need it most. Specialized maternal mental health crisis intervention available around the clock.",
+		desc: "Immediate help when you need it most. Specialized women's mental health crisis intervention available around the clock.",
 		icon: Shield,
 		gradient: "from-purple-400 to-violet-500",
-		features: ["Instant Crisis Response", "Maternal Emergency Support", "24/7 Helpline", "Immediate Intervention"]
+		features: ["Instant Crisis Response", "Women's Emergency Support", "24/7 Helpline", "Immediate Intervention"]
 	},
 	{
 		title: "AI-Powered Personalization",
-		desc: "Advanced technology creates individualized treatment plans tailored specifically for maternal and family mental health needs.",
+		desc: "Advanced technology creates individualized treatment plans tailored specifically for women's mental health needs across all life stages.",
 		icon: Brain,
 		gradient: "from-blue-400 to-cyan-500",
 		features: ["Personalized Treatment Plans", "AI Assessment Tools", "Progress Tracking", "Adaptive Care Paths"]
 	},
 	{
-		title: "Perinatal Specialist Network",
-		desc: "Connect with board-certified therapists who specialize in maternal mental health, pregnancy, and postpartum care.",
+		title: "Women's Health Specialist Network",
+		desc: "Connect with board-certified therapists who specialize in women's mental health, including reproductive health, career stress, and relationship challenges.",
 		icon: HeartHandshake,
 		gradient: "from-green-400 to-emerald-500",
-		features: ["Certified Perinatal Therapists", "Maternal Health Experts", "Specialized Training", "Evidence-Based Approaches"]
+		features: ["Women's Health Therapists", "Female Mental Health Experts", "Specialized Training", "Evidence-Based Approaches"]
 	},
 ];
 
 // Powerful Impact Metrics
 const impactMetrics = [
-	{ icon: Users, label: "Mothers Helped", value: "85+", color: "text-rose-600", bgColor: "bg-rose-50" },
+	{ icon: Users, label: "Women Helped", value: "2,500+", color: "text-rose-600", bgColor: "bg-rose-50" },
 	{ icon: Heart, label: "Recovery Success", value: "94%", color: "text-purple-600", bgColor: "bg-purple-50" },
-	{ icon: Award, label: "Specialist Therapists", value: "47", color: "text-blue-600", bgColor: "bg-blue-50" },
+	{ icon: Award, label: "Specialist Therapists", value: "150+", color: "text-blue-600", bgColor: "bg-blue-50" },
 	{ icon: Clock, label: "Crisis Response", value: "24/7", color: "text-green-600", bgColor: "bg-green-50" },
 	{ icon: Shield, label: "Privacy Protected", value: "100%", color: "text-indigo-600", bgColor: "bg-indigo-50" },
 	{ icon: Sparkles, label: "Treatment Plans", value: "Custom", color: "text-amber-600", bgColor: "bg-amber-50" },
@@ -113,45 +113,45 @@ const impactMetrics = [
 
 // Comprehensive Benefits
 const platformBenefits = [
-	"MATERNAL MENTAL HEALTH SPECIALISTS",
-	"POSTPARTUM DEPRESSION TREATMENT", 
-	"PREGNANCY ANXIETY SUPPORT",
+	"WOMEN'S MENTAL HEALTH SPECIALISTS",
+	"DEPRESSION & ANXIETY TREATMENT", 
+	"TRAUMA-INFORMED CARE",
 	"24/7 CRISIS INTERVENTION",
-	"PERINATAL MOOD DISORDER CARE",
+	"REPRODUCTIVE HEALTH SUPPORT",
 	"AI-POWERED PERSONALIZATION",
 	"HIPAA COMPLIANT SECURITY",
 	"FLEXIBLE SCHEDULING",
 	"INSURANCE ACCEPTED",
 	"EVIDENCE-BASED THERAPY",
-	"FAMILY SUPPORT PROGRAMS",
-	"BIRTH TRAUMA RECOVERY",
-	"BREASTFEEDING SUPPORT",
+	"LIFE TRANSITION SUPPORT",
+	"RELATIONSHIP COUNSELING",
+	"CAREER STRESS MANAGEMENT",
 	"COMMUNITY CONNECTIONS"
 ];
 
 const testimonials = [
 	{
 		name: "Sarah Martinez",
-		text: "All in Awareness saved my life during my battle with postpartum depression. The specialized maternal care and understanding I received was exactly what I needed as a new mother. I finally felt heard and supported.",
+		text: "Mindhaven changed my life during my struggle with depression and anxiety. The specialized women's care and understanding I received was exactly what I needed. I finally felt heard and supported.",
 		avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
 		rating: 5,
-		title: "New Mother, PPD Survivor",
+		title: "Working Professional",
 		location: "California"
 	},
 	{
 		name: "Dr. Emily Chen",
-		text: "As a board-certified perinatal psychologist, I'm incredibly impressed by All in Awareness's evidence-based approach to maternal mental health. This platform truly addresses the critical treatment gap in maternal care.",
+		text: "As a licensed psychologist specializing in women's mental health, I'm incredibly impressed by Mindhaven's evidence-based approach. This platform truly addresses the critical treatment gap in women's mental health care.",
 		avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face",
 		rating: 5,
-		title: "Perinatal Psychologist",
+		title: "Clinical Psychologist",
 		location: "New York"
 	},
 	{
 		name: "Maria Rodriguez",
-		text: "The community support and specialized therapy helped me through severe pregnancy anxiety. The 24/7 support gave me peace of mind knowing help was always available. I felt understood and supported every step of the way.",
+		text: "The community support and specialized therapy helped me through career burnout and relationship stress. The 24/7 support gave me peace of mind knowing help was always available when I needed it most.",
 		avatar: "https://images.unsplash.com/photo-1548142813-c348350df52b?w=150&h=150&fit=crop&crop=face",
 		rating: 5,
-		title: "Expecting Mother",
+		title: "Entrepreneur",
 		location: "Texas"
 	},
 ];
@@ -161,14 +161,14 @@ const processSteps = [
 	{
 		step: "01",
 		title: "Take Assessment",
-		description: "Complete our specialized maternal mental health screening designed by perinatal experts",
+		description: "Complete our specialized women's mental health screening designed by licensed professionals",
 		icon: CheckCircle,
 		color: "from-rose-400 to-pink-500"
 	},
 	{
 		step: "02", 
 		title: "Get Matched",
-		description: "Our AI connects you with certified maternal mental health specialists who understand your specific needs",
+		description: "Our AI connects you with certified women's mental health specialists who understand your specific needs",
 		icon: UserCheck,
 		color: "from-purple-400 to-violet-500"
 	},
@@ -288,10 +288,9 @@ const Landing = () => {
 						repeat: Infinity, 
 						ease: "linear" 
 					}}
-				>
-					<img 
+				>					<img 
 						src="/front_logo.png" 
-						alt="All in Awareness Logo" 
+						alt="Mindhaven Logo" 
 						className="w-96 h-96 object-contain opacity-5 drop-shadow-2xl"
 					/>
 				</motion.div>
@@ -327,8 +326,7 @@ const Landing = () => {
 					transition={{ type: "spring", stiffness: 300 }}
 				>
 					<motion.img 
-						src="/front_logo.png" 
-						alt="All in Awareness Logo" 
+						src="/front_logo.png"						alt="Mindhaven Logo" 
 						className="w-14 h-14 object-contain drop-shadow-lg"
 						animate={{ rotate: [0, 5, -5, 0] }}
 						transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -339,9 +337,9 @@ const Landing = () => {
 							animate={{ backgroundPosition: ["0%", "100%"] }}
 							transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
 						>
-							All in Awareness
+							Mindhaven
 						</motion.h1>
-						<p className="text-sm text-gray-700 font-medium tracking-wide">Maternal Mental Health Platform</p>
+						<p className="text-sm text-gray-700 font-medium tracking-wide">Women's Mental Health Platform</p>
 					</div>
 				</motion.div>
 						
@@ -370,10 +368,9 @@ const Landing = () => {
 				<motion.div 
 					className="mb-8 px-6 py-3 bg-gradient-to-r from-rose-100 to-purple-100 border border-rose-200 rounded-full"
 					variants={itemVariants}
-				>
-					<p className="text-rose-700 font-semibold text-sm flex items-center gap-2">
+				>					<p className="text-rose-700 font-semibold text-sm flex items-center gap-2">
 						<Heart className="w-4 h-4 animate-pulse" />
-						Addressing the maternal mental health crisis - You are not alone
+						Empowering women's mental health journey - You are not alone
 					</p>
 				</motion.div>
 
@@ -387,24 +384,22 @@ const Landing = () => {
 					transition={{ 
 						backgroundPosition: { duration: 4, repeat: Infinity },
 						scale: { duration: 6, repeat: Infinity }
-					}}
-				>
-					All in Awareness
+					}}				>
+					Mindhaven
 				</motion.h1>
 				
 				<motion.p 
 					className="text-2xl md:text-4xl text-gray-800 mb-6 max-w-5xl mx-auto leading-relaxed font-light"
 					variants={itemVariants}
 				>
-					Breaking barriers in <span className="font-semibold text-rose-600">maternal mental health</span>
+					Breaking barriers in <span className="font-semibold text-rose-600">women's mental health</span>
 				</motion.p>
 				
 				<motion.p 
 					className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed"
 					variants={itemVariants}
-				>
-					Specialized care for postpartum depression, pregnancy anxiety, and perinatal mood disorders. 
-					Evidence-based treatment with certified maternal mental health specialists available 24/7.
+				>					Comprehensive care for depression, anxiety, trauma, and women's unique mental health challenges. 
+					Evidence-based treatment with certified women's mental health specialists available 24/7.
 				</motion.p>
 
 				{/* Crisis Statistics */}
@@ -489,7 +484,7 @@ const Landing = () => {
 							The Reality We Face
 						</h2>
 						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-							Understanding the scope of the maternal mental health crisis through real data
+							Understanding the scope of the women's mental health crisis through real data
 						</p>
 					</motion.div>
 					
@@ -598,12 +593,11 @@ const Landing = () => {
 				viewport={{ once: true, amount: 0.3 }}
 			>
 				<div className="max-w-7xl mx-auto">
-					<motion.div className="text-center mb-16" variants={itemVariants}>
-						<h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
-							Revolutionary Maternal Care
+					<motion.div className="text-center mb-16" variants={itemVariants}>						<h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
+							Comprehensive Women's Care
 						</h2>
 						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-							Comprehensive solutions designed specifically for maternal mental health challenges
+							Comprehensive solutions designed specifically for women's mental health challenges
 						</p>
 					</motion.div>
 
@@ -727,7 +721,7 @@ const Landing = () => {
 							How It Works
 						</h2>
 						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-							Three simple steps to get the maternal mental health support you deserve
+							Three simple steps to get the women's mental health support you deserve
 						</p>
 					</motion.div>
 
@@ -899,7 +893,7 @@ const Landing = () => {
 							Our Impact
 						</h2>
 						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-							Making a real difference in maternal mental health outcomes
+							Making a real difference in women's mental health outcomes
 						</p>
 					</motion.div>
 
@@ -1217,7 +1211,7 @@ const Landing = () => {
 						className="text-xl md:text-2xl mb-8 opacity-90"
 						variants={itemVariants}
 					>
-						Join thousands of mothers who have found hope, healing, and support through All in Awareness
+						Join thousands of women who have found hope, healing, and support through Mindhaven
 					</motion.p>
 					
 					<motion.div 
@@ -1287,19 +1281,17 @@ const Landing = () => {
 						className="flex items-center justify-center gap-4 mb-8"
 						whileHover={{ scale: 1.05 }}
 						transition={{ type: "spring", stiffness: 300 }}
-					>
-						<motion.img 
+					>						<motion.img 
 							src="/front_logo.png" 
-							alt="All in Awareness Logo" 
+							alt="Mindhaven Logo" 
 							className="w-12 h-12 object-contain drop-shadow-lg"
 							animate={{ rotate: [0, 5, -5, 0] }}
 							transition={{ duration: 4, repeat: Infinity }}
-						/>
-						<div className="text-left">
+						/><div className="text-left">
 							<h3 className="text-2xl font-bold bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
-								All in Awareness
+								Mindhaven
 							</h3>
-							<p className="text-sm text-gray-600">Maternal Mental Health Platform</p>
+							<p className="text-sm text-gray-600">Women's Mental Health Platform</p>
 						</div>
 					</motion.div>
 
@@ -1309,11 +1301,10 @@ const Landing = () => {
 						variants={containerVariants}
 						initial="hidden"
 						animate="visible"
-					>
-						{[
-							"Specialized Maternal Care",
+					>						{[
+							"Specialized Women's Care",
 							"24/7 Support", 
-							"Licensed Perinatal Therapists",
+							"Licensed Female Therapists",
 							"Evidence-Based Treatment",
 							"HIPAA Compliant",
 							"Insurance Accepted"
@@ -1328,58 +1319,56 @@ const Landing = () => {
 								{feature}
 							</motion.span>
 						))}
-					</motion.div>
-
-					{/* Footer Links */}
+					</motion.div>					{/* Footer Links */}
 					<div className="grid md:grid-cols-4 gap-8 mb-12 text-sm">
 						<div>
 							<h4 className="font-semibold text-gray-800 mb-4">Getting Started</h4>
 							<ul className="space-y-3">
-								<li><a href="#" className="hover:text-rose-600 transition-colors flex items-center gap-2">
+								<li><Link to="/get-started" className="hover:text-rose-600 transition-colors flex items-center gap-2">
 									<ArrowRight className="w-3 h-3" /> How It Works
-								</a></li>
-								<li><a href="#" className="hover:text-rose-600 transition-colors flex items-center gap-2">
+								</Link></li>
+								<li><Link to="/therapist-booking" className="hover:text-rose-600 transition-colors flex items-center gap-2">
 									<ArrowRight className="w-3 h-3" /> Find Specialists
-								</a></li>
-								<li><a href="#" className="hover:text-rose-600 transition-colors flex items-center gap-2">
+								</Link></li>
+								<li><Link to="/wellness-metrics" className="hover:text-rose-600 transition-colors flex items-center gap-2">
 									<ArrowRight className="w-3 h-3" /> Treatment Plans
-								</a></li>
-								<li><a href="#" className="hover:text-rose-600 transition-colors flex items-center gap-2">
+								</Link></li>
+								<li><Link to="/personalization-quiz" className="hover:text-rose-600 transition-colors flex items-center gap-2">
 									<ArrowRight className="w-3 h-3" /> Assessment
-								</a></li>
+								</Link></li>
 							</ul>
 						</div>
 						<div>
-							<h4 className="font-semibold text-gray-800 mb-4">Maternal Support</h4>
+							<h4 className="font-semibold text-gray-800 mb-4">Women's Support</h4>
 							<ul className="space-y-3">
-								<li><a href="#" className="hover:text-purple-600 transition-colors flex items-center gap-2">
-									<Baby className="w-3 h-3" /> Postpartum Depression
-								</a></li>
-								<li><a href="#" className="hover:text-purple-600 transition-colors flex items-center gap-2">
-									<Heart className="w-3 h-3" /> Pregnancy Anxiety
-								</a></li>
-								<li><a href="#" className="hover:text-purple-600 transition-colors flex items-center gap-2">
-									<Shield className="w-3 h-3" /> Support
-								</a></li>
-								<li><a href="#" className="hover:text-purple-600 transition-colors flex items-center gap-2">
+								<li><Link to="/depression-quiz" className="hover:text-purple-600 transition-colors flex items-center gap-2">
+									<Heart className="w-3 h-3" /> Depression Support
+								</Link></li>
+								<li><Link to="/mental-health-score" className="hover:text-purple-600 transition-colors flex items-center gap-2">
+									<Brain className="w-3 h-3" /> Anxiety Assessment
+								</Link></li>
+								<li><Link to="/content-recommendations" className="hover:text-purple-600 transition-colors flex items-center gap-2">
+									<Shield className="w-3 h-3" /> Resources
+								</Link></li>
+								<li><Link to="/communities" className="hover:text-purple-600 transition-colors flex items-center gap-2">
 									<Users className="w-3 h-3" /> Support Groups
-								</a></li>
+								</Link></li>
 							</ul>
 						</div>
 						<div>
 							<h4 className="font-semibold text-gray-800 mb-4">Resources</h4>
 							<ul className="space-y-3">
-								<li><a href="#" className="hover:text-blue-600 transition-colors flex items-center gap-2">
-									<BookOpen className="w-3 h-3" /> Help Center
+								<li><a href="https://www.nami.org/Help" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2">
+									<BookOpen className="w-3 h-3" /> Mental Health Resources
 								</a></li>
-								<li><a href="#" className="hover:text-blue-600 transition-colors flex items-center gap-2">
-									<Shield className="w-3 h-3" /> Privacy Policy
+								<li><a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2">
+									<Shield className="w-3 h-3" /> Crisis Support
 								</a></li>
-								<li><a href="#" className="hover:text-blue-600 transition-colors flex items-center gap-2">
-									<CheckCircle className="w-3 h-3" /> Terms of Service
+								<li><a href="https://www.womenshealth.gov/mental-health" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2">
+									<CheckCircle className="w-3 h-3" /> Women's Health Info
 								</a></li>
-								<li><a href="#" className="hover:text-blue-600 transition-colors flex items-center gap-2">
-									<Lightbulb className="w-3 h-3" /> Mental Health Resources
+								<li><a href="https://www.cdc.gov/reproductivehealth/features/mental-health-women/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2">
+									<Lightbulb className="w-3 h-3" /> CDC Women's Mental Health
 								</a></li>
 							</ul>
 						</div>						<div>
@@ -1387,24 +1376,22 @@ const Landing = () => {
 							<ul className="space-y-3">
 								<li className="flex items-center gap-2">
 									<Phone className="w-3 h-3 text-red-500" />
-									<span className="font-semibold text-red-600">Support Line</span>
+									<a href="tel:988" className="font-semibold text-red-600 hover:underline">Crisis Line: 988</a>
 								</li>
 								<li className="flex items-center gap-2">
 									<MessageCircle className="w-3 h-3 text-purple-500" />
-									<span>support@allinawareness.com</span>
+									<a href="mailto:support@mindhaven.com" className="hover:underline">support@mindhaven.com</a>
 								</li>
 								<li className="flex items-center gap-2">
 									<Clock className="w-3 h-3 text-blue-500" />
-									<span>Immediate Response</span>
+									<span>24/7 Immediate Response</span>
 								</li>
 								<li className="text-xs text-gray-500 pt-2">
-									Available for maternal mental health support
+									Available for women's mental health support
 								</li>
 							</ul>
 						</div>
-					</div>
-
-					{/* Crisis Resources */}
+					</div>					{/* Crisis Resources */}
 					<motion.div 
 						className="bg-gradient-to-r from-red-50 to-rose-50 border border-red-200 rounded-2xl p-6 mb-8"
 						whileHover={{ scale: 1.02 }}
@@ -1417,29 +1404,27 @@ const Landing = () => {
 						<div className="grid md:grid-cols-3 gap-4 text-sm">
 							<div>
 								<strong>National Suicide Prevention:</strong><br />
-								<span className="text-red-600 font-semibold">988</span>
+								<a href="tel:988" className="text-red-600 font-semibold hover:underline">988</a>
 							</div>
 							<div>
-								<strong>Postpartum Support International:</strong><br />
-								<span className="text-red-600 font-semibold">1-800-944-4773</span>
+								<strong>Women's Mental Health Helpline:</strong><br />
+								<a href="tel:1-800-950-6264" className="text-red-600 font-semibold hover:underline">1-800-950-6264</a>
 							</div>
 							<div>
 								<strong>Crisis Text Line:</strong><br />
-								<span className="text-red-600 font-semibold">Text HOME to 741741</span>
+								<a href="sms:741741?body=HOME" className="text-red-600 font-semibold hover:underline">Text HOME to 741741</a>
 							</div>
 						</div>
-					</motion.div>
-
-					{/* Copyright */}
+					</motion.div>					{/* Copyright */}
 					<div className="border-t border-gray-200 pt-8">
 						<p className="text-sm text-gray-500 mb-2">
-							© {new Date().getFullYear()} All in Awareness. All rights reserved.
+							© {new Date().getFullYear()} Mindhaven. All rights reserved.
 						</p>
 						<p className="text-xs text-gray-400">
-							Licensed maternal mental health professionals • HIPAA compliant • Evidence-based treatment • Crisis support available 24/7
+							Licensed women's mental health professionals • HIPAA compliant • Evidence-based treatment • Crisis support available 24/7
 						</p>
 						<p className="text-xs text-gray-400 mt-2">
-							<strong>Disclaimer:</strong> All in Awareness provides mental health support and is not a substitute for emergency medical care. 
+							<strong>Disclaimer:</strong> Mindhaven provides mental health support and is not a substitute for emergency medical care. 
 							If you are experiencing a medical emergency, please call 911 immediately.
 						</p>
 					</div>

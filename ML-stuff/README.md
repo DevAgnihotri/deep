@@ -2,7 +2,7 @@
 
 ## 📋 **Overview**
 
-This directory contains 8 specialized Jupyter notebooks that form a complete AI/ML ecosystem for the ALLINA women's mental health platform. Each notebook addresses different aspects of mental health analysis, from traditional clinical assessments to cutting-edge AI-powered therapeutic support.
+This directory contains 7 specialized Jupyter notebooks that form a complete AI/ML ecosystem for the ALLINA women's mental health platform. Each notebook addresses different aspects of mental health analysis, from traditional clinical assessments to cutting-edge AI-powered therapeutic support.
 
 ---
 

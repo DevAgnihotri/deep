@@ -354,15 +354,15 @@ export const WellnessMetrics = () => {
 
   const generateRecommendation = () => {
     const wellnessInsights = [
-      "Your ALL&nbsp;IN&nbsp;A psychological wellness metrics show positive patterns.",
+      "Your Mindhaven psychological wellness metrics show positive patterns.",
       "Your stress and mood indicators suggest healthy emotional balance.",
-      "Your mindfulness and focus levels align with ALL&nbsp;IN&nbsp;A's wellness goals."
+      "Your mindfulness and focus levels align with Mindhaven's wellness goals."
     ];
 
     const recommendations = [
-      "Continue your current wellness routine - ALL&nbsp;IN&nbsp;A suggests maintaining this positive trend",
-      "Consider ALL&nbsp;IN&nbsp;A's mindfulness exercises to enhance emotional well-being",
-      "Your psychological metrics indicate excellent mental health management with ALL&nbsp;IN&nbsp;A's support!"
+      "Continue your current wellness routine - Mindhaven suggests maintaining this positive trend",
+      "Consider Mindhaven's mindfulness exercises to enhance emotional well-being",
+      "Your psychological metrics indicate excellent mental health management with Mindhaven's support!"
     ];
 
     return { insights: wellnessInsights, recommendations };
@@ -376,7 +376,7 @@ export const WellnessMetrics = () => {
         <div className="flex items-center">
           <img 
             src="/logo.png" 
-            alt="ALL&nbsp;IN&nbsp;A Logo" 
+            alt="Mindhaven Logo" 
             className="w-8 h-8 object-contain mr-2" 
           />
           <h2 className="text-xl font-bold text-gray-900">

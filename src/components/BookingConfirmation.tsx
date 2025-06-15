@@ -75,8 +75,8 @@ export const BookingConfirmation = ({ therapist, bookingDetails: providedBooking
               <div className="bg-green-100 p-2 rounded-full">
                 <CheckCircle className="w-6 h-6 text-green-600" />
               </div>              <div>
-                <h3 className="text-lg font-semibold text-green-800">ALL&nbsp;IN&nbsp;A Booking Confirmed!</h3>
-                <p className="text-green-600">Your ALL&nbsp;IN&nbsp;A therapy session has been successfully scheduled.</p>
+                <h3 className="text-lg font-semibold text-green-800">Mindhaven Booking Confirmed!</h3>
+                <p className="text-green-600">Your Mindhaven therapy session has been successfully scheduled.</p>
               </div>
             </div>
           </CardContent>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PicoBuddy</title>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+  </head>
+  <body class="c">
+    <div id="modal">
+      <div>
+        <h1>PicoBuddy</h1>
+        <button
+          id="mb"
+          class="loud-button"
+        >
+          Start!
+        </button>
+      </div>
+    </div>
+    <main>
+      <!-- SECTION 1: LEFT -->
+      <section>
+        <div id="out">
+          <div id="in">
+            <div
+              id="pb"
+              class="sb"
+            ></div>
+          </div>
+          <div id="bh"></div>
+        </div>
+        <div id="cd">
+          <h2>Current Demands</h2>
+          <ol id="ae">
+            None!
+          </ol>
+        </div>
+      </section>
+
+      <!-- SECTION 2: MIDDLE -->
+      <section>
+        <button
+          id="day"
+          disabled
+        >
+          Day 1
+        </button>
+        <div id="hm">
+          <div id="hmm">🙂</div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Right -->
+      <section>
+        <div id="t"></div>
+      </section>
+    </main>
+    
+    <!-- Return to Mindhaven Button -->
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+      <button onclick="window.close(); window.location.href = '/';" 
+              style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                     color: white; border: none; padding: 8px 16px; 
+                     border-radius: 20px; font-size: 12px; cursor: pointer; 
+                     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                     transition: transform 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'">
+        ← Back to Mindhaven
+      </button>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>

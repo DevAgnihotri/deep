@@ -86,19 +86,19 @@ export const Communities = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-16">          <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-8">
-            <img src="/logo.png" alt="ALL&nbsp;IN&nbsp;A Logo" className="w-4 h-4 mr-2 object-contain" />
-            Connect with ALL&nbsp;IN&nbsp;A community members
+            <img src="/logo.png" alt="Mindhaven Logo" className="w-4 h-4 mr-2 object-contain" />
+            Connect with Mindhaven community members
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Join ALL&nbsp;IN&nbsp;A
+            Join Mindhaven
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
               {" "}Mental Wellness
             </span>
             <br />Communities
           </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Connect with the supportive ALL&nbsp;IN&nbsp;A community of individuals on their mental health journey. 
+            Connect with the supportive Mindhaven community of individuals on their mental health journey. 
             Share experiences, find support, and grow together across multiple platforms.
           </p>
         </div>

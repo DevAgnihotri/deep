@@ -219,7 +219,7 @@ export const ChatBot = () => {
           isOpen ? 'scale-0' : 'scale-100'
         }`}
       >
-        <img src="/logo.png" alt="ALL&nbsp;IN&nbsp;A Logo" className="w-6 h-6 object-contain" />
+        <img src="/logo.png" alt="Mindhaven Logo" className="w-6 h-6 object-contain" />
       </Button>
 
       {/* Chat Window */}

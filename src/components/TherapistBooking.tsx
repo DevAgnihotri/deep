@@ -184,10 +184,10 @@ export const TherapistBooking = () => {
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Book a Session with ALL&nbsp;IN&nbsp;A Expert Therapists
+          Book a Session with Mindhaven Expert Therapists
         </h1>
         <p className="text-gray-600 text-lg">
-          Choose from ALL&nbsp;IN&nbsp;A's licensed mental health professionals
+          Choose from Mindhaven's licensed mental health professionals
         </p>
         {user && (
           <div className="mt-4 flex items-center justify-center gap-4">

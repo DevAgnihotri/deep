@@ -319,7 +319,7 @@ export const PersonalizationQuiz = ({ onComplete }: PersonalizationQuizProps) =>
             <span className="text-white font-bold text-xl">{currentQuestion + 1}</span>
           </div>
           <CardTitle className="text-2xl font-bold text-gray-900 mb-2">
-            Let's personalize your ALL&nbsp;IN&nbsp;A experience
+            Let's personalize your Mindhaven experience
           </CardTitle>
           <Progress value={progress} className="w-full h-2 mb-4" />
           <p className="text-gray-600">

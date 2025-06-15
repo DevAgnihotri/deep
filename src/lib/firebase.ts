@@ -1,6 +1,6 @@
 // Firebase initialization
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, OAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
@@ -26,5 +26,10 @@ googleProvider.setCustomParameters({
   prompt: 'select_account'
 });
 
-export const appleProvider = new OAuthProvider('apple.com');
+// Configure GitHub provider
+export const githubProvider = new GithubAuthProvider();
+githubProvider.addScope('user:email');
+githubProvider.setCustomParameters({
+  allow_signup: 'true'
+});
 const analytics = getAnalytics(app);

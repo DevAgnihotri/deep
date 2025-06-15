@@ -45,7 +45,7 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
               alt="ALL IN A Logo" 
               className="w-8 h-8 object-contain"
             />
-            <span className="font-bold text-xl text-gray-800">ALL&nbsp;IN&nbsp;A</span>
+            <span className="font-bold text-xl text-gray-800">Mindhaven</span>
           </div>
 
           {/* Desktop Menu */}
