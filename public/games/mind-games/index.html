@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mind Games from Mindhaven</title>
+    <meta name="description" content="Mind Games from Mindhaven - Mathematical puzzle game to exercise your brain">
+    <meta name="author" content="Dev Agnihotri">
+    <link rel="stylesheet" href="./assets/reset.css">
+    <style>
+        .go-back-button-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            text-decoration: none;
+            color: #fff !important;
+            background: #d32f2f;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid #b71c1c;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+        .go-back-button-fixed:hover {
+            background: #b71c1c;
+            cursor: pointer;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .go-back-button-fixed:active {
+            background: #a50000;
+            transform: translateY(0px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Go Back Button - Fixed Position -->
+    <a href="/#recommendations" class="go-back-button-fixed">← Go Back</a>
+    <script src="./index.js"></script>
+</body>
+</html>
