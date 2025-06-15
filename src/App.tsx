@@ -12,6 +12,7 @@ import AuthPage from "./pages/AuthPage";
 import GetStarted from "./pages/GetStarted";
 import Communities from "./pages/Communities";
 import { Courses } from "./pages/Courses";
+import Dashboard from "./pages/Dashboard";
 import { useAuth } from "@/contexts/AuthContext";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/signup" element={<AuthPage />} />
               <Route path="/get-started" element={<GetStarted />} />
               <Route path="/communities" element={<Communities />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} />
               <Route path="/home" element={<ProtectedRoute><Index /></ProtectedRoute>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

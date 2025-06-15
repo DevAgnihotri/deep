@@ -3,4 +3,8 @@ export { default as SilentStruggleChart } from './SilentStruggleChart';
 export { default as RiskComparisonChart } from './RiskComparisonChart';
 export { default as SeveritySpectrumChart } from './SeveritySpectrumChart';
 export { default as EarlyWarningChart } from './EarlyWarningChart';
+export { default as MentalHealthTrendChart } from './MentalHealthTrendChart';
+export { default as InterventionEffectivenessChart } from './InterventionEffectivenessChart';
+export { default as AgeGroupRiskChart } from './AgeGroupRiskChart';
+export { default as DemographicRiskChart } from './DemographicRiskChart';
 export * from './chartData';

@@ -16,6 +16,10 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
     navigate("/communities");
   };
 
+  const handleLearnMoreClick = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div className="relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -48,6 +52,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
             </Button>
             
             <Button
+              onClick={handleLearnMoreClick}
               variant="outline"
               size="lg"
               className="border-2 border-green-200 text-green-700 hover:bg-green-50 px-8 py-4 rounded-full text-lg font-semibold"
