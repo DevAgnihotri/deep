@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AlertTriangle, User, Heart, Edit, Save, X, Plus, Check, AlertCircle } from "lucide-react";
+import { AlertTriangle, UserCheck, Heart, Edit, Save, X, Plus, Check, AlertCircle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -208,10 +208,10 @@ export const Profile = () => {
         <div className="flex items-center">
           <img 
             src="/logo.png" 
-            alt="ALL IN A Logo" 
+            alt="Mindhaven Logo" 
             className="w-10 h-10 object-contain mr-3" 
           />
-          <h1 className="text-3xl font-bold text-gray-900">ALL IN A Profile</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Mindhaven Profile</h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
@@ -290,7 +290,7 @@ export const Profile = () => {
       {/* Navigation Tabs */}
       <div className="flex space-x-1 mb-6 bg-gray-100 rounded-lg p-1">
         {[
-          { id: 'overview', label: 'Overview', icon: User },
+          { id: 'overview', label: 'Overview', icon: UserCheck },
           { id: 'personal', label: 'Personal Details', icon: Edit },
           { id: 'health', label: 'Physiological Metrics', icon: Heart }
         ].map((tab) => (
@@ -316,7 +316,7 @@ export const Profile = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <User className="w-5 h-5 text-green-600" />
+                <UserCheck className="w-5 h-5 text-green-600" />
                 <span>Profile Overview</span>
               </CardTitle>
             </CardHeader>

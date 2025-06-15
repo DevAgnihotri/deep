@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarioBuddy Game Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #output {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .search-box {
+            margin: 10px 0;
+        }
+        .search-box input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 MarioBuddy Game Content Decoder</h1>
+        <p>This tool will help us understand what's inside the compressed script.js file</p>
+        
+        <button onclick="decodeGame()">🚀 Decode Game Content</button>
+        <button onclick="searchForText()">🔍 Search for "Pico" References</button>
+        <button onclick="clearOutput()">🗑️ Clear Output</button>
+        
+        <div class="search-box">
+            <label>Search for specific text: </label>
+            <input type="text" id="searchInput" placeholder="Enter text to search...">
+            <button onclick="customSearch()">Search</button>
+        </div>
+        
+        <div class="status" id="status">Ready to decode...</div>
+        
+        <h3>📄 Decoded Content:</h3>
+        <div id="output">Click "Decode Game Content" to see the decompressed JavaScript...</div>
+    </div>
+
+    <script>
+        let decodedContent = '';
+        
+        async function decodeGame() {
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+            
+            status.textContent = 'Decoding compressed game...';
+            
+            try {
+                // Load and execute the compressed script to get the actual content
+                const response = await fetch('./script.js');
+                const compressedScript = await response.text();
+                
+                // Try to extract the compressed content
+                status.textContent = 'Extracting compressed content...';
+                
+                // We'll try to evaluate the compression function and see what it produces
+                try {
+                    // Create a safe sandbox to run the decompression
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+                    
+                    // Execute the script in the iframe to capture the decompressed content
+                    iframe.contentWindow.eval(`
+                        try {
+                            // Capture console output
+                            let capturedContent = '';
+                            const originalLog = console.log;
+                            console.log = (...args) => {
+                                capturedContent += args.join(' ') + '\\n';
+                                originalLog(...args);
+                            };
+                            
+                            // Execute the compressed script
+                            ${compressedScript}
+                            
+                            // Send the content back to parent
+                            parent.postMessage({
+                                type: 'decodedContent',
+                                content: capturedContent || 'No console output captured'
+                            }, '*');
+                            
+                        } catch (err) {
+                            parent.postMessage({
+                                type: 'error',
+                                error: err.message
+                            }, '*');
+                        }
+                    `);
+                    
+                    // Listen for messages from iframe
+                    window.addEventListener('message', function(event) {
+                        if (event.data.type === 'decodedContent') {
+                            decodedContent = event.data.content;
+                            output.textContent = decodedContent;
+                            status.textContent = 'Decoding complete! Check the output below.';
+                        } else if (event.data.type === 'error') {
+                            output.textContent = `Error during decoding: ${event.data.error}`;
+                            status.textContent = 'Decoding failed.';
+                        }
+                    });
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 3000);
+                    
+                } catch (evalError) {
+                    // If direct evaluation fails, let's try to analyze the structure
+                    status.textContent = 'Direct decoding failed, analyzing structure...';
+                    analyzeCompressedStructure(compressedScript);
+                }
+                
+            } catch (error) {
+                output.textContent = `Error loading script: ${error.message}`;
+                status.textContent = 'Failed to load script file.';
+            }
+        }
+        
+        function analyzeCompressedStructure(script) {
+            const output = document.getElementById('output');
+            
+            let analysis = `=== MARIOBUDDY SCRIPT ANALYSIS ===\n\n`;
+            
+            // Extract the compression function structure
+            if (script.includes('eval(Function(')) {
+                analysis += "✅ Detected: eval(Function()) compression pattern\n";
+            }
+            
+            // Look for the compressed string
+            const stringMatch = script.match(/M='([^']+)'/);
+            if (stringMatch) {
+                const compressedString = stringMatch[1];
+                analysis += `✅ Found compressed string: ${compressedString.length} characters\n`;
+                analysis += `   First 100 chars: ${compressedString.substring(0, 100)}...\n\n`;
+                
+                // Try to find readable patterns in the compressed string
+                analysis += "🔍 SEARCHING FOR READABLE PATTERNS:\n";
+                
+                // Look for common game-related words that might be encoded
+                const searchTerms = ['pico', 'mario', 'buddy', 'game', 'start', 'play', 'score'];
+                
+                searchTerms.forEach(term => {
+                    // Simple pattern matching - looking for sequences that might represent the word
+                    const variations = [
+                        term.toLowerCase(),
+                        term.toUpperCase(),
+                        term.charAt(0).toUpperCase() + term.slice(1)
+                    ];
+                    
+                    variations.forEach(variant => {
+                        if (compressedString.toLowerCase().includes(variant.toLowerCase())) {
+                            analysis += `   ⚠️  Potential "${variant}" reference found in compressed data\n`;
+                        }
+                    });
+                });
+                
+                // Character frequency analysis
+                analysis += "\n📊 CHARACTER FREQUENCY ANALYSIS:\n";
+                const charCount = {};
+                for (let char of compressedString) {
+                    charCount[char] = (charCount[char] || 0) + 1;
+                }
+                
+                const sortedChars = Object.entries(charCount)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 10);
+                
+                analysis += "   Most frequent characters:\n";
+                sortedChars.forEach(([char, count]) => {
+                    analysis += `   "${char}": ${count} times\n`;
+                });
+            }
+            
+            // Look for decompression parameters
+            if (script.includes('1 << 17')) {
+                analysis += "\n✅ Found decompression parameters (bit shifting)\n";
+            }
+            
+            analysis += "\n💡 RECOMMENDATIONS:\n";
+            analysis += "   1. The game content is heavily compressed\n";
+            analysis += "   2. Any 'pico' references would be encoded in the compressed string\n";
+            analysis += "   3. Changing them requires understanding the compression algorithm\n";
+            analysis += "   4. Safer approach: Keep HTML title as 'MarioBuddy' and accept internal text\n";
+            
+            decodedContent = analysis;
+            output.textContent = analysis;
+            document.getElementById('status').textContent = 'Analysis complete!';
+        }
+        
+        function searchForText() {
+            const searchTerm = 'pico';
+            performSearch(searchTerm);
+        }
+        
+        function customSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                performSearch(searchTerm);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+        
+        function performSearch(searchTerm) {
+            const output = document.getElementById('output');
+            
+            if (!decodedContent) {
+                alert('Please decode the game content first');
+                return;
+            }
+            
+            const regex = new RegExp(searchTerm, 'gi');
+            const highlighted = decodedContent.replace(regex, `<span class="highlight">$&</span>`);
+            
+            output.innerHTML = highlighted;
+            
+            const matches = decodedContent.match(regex);
+            const status = document.getElementById('status');
+            status.textContent = matches ? 
+                `Found ${matches.length} matches for "${searchTerm}"` : 
+                `No matches found for "${searchTerm}"`;
+        }
+        
+        function clearOutput() {
+            document.getElementById('output').textContent = 'Output cleared. Click "Decode Game Content" to start again.';
+            document.getElementById('status').textContent = 'Ready to decode...';
+            decodedContent = '';
+        }
+    </script>
+</body>
+</html>

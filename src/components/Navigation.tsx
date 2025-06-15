@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, Calendar, BookOpen, MessageCircle, User, LogOut, GraduationCap, Brain } from "lucide-react";
+import { Menu, X, Heart, Calendar, BookOpen, MessageCircle, UserCheck, LogOut, GraduationCap, Brain } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { signOut } from "firebase/auth";
@@ -29,7 +29,6 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
   const menuItems = [
     { id: "home", label: "Home", icon: Heart },
     { id: "assessment", label: "Mental Health Assessment", icon: Brain },
-    { id: "quiz", label: "Share Your Day", icon: MessageCircle },
     { id: "courses", label: "Courses", icon: GraduationCap },
     { id: "booking", label: "Book Therapist", icon: Calendar },
     { id: "recommendations", label: "Resources", icon: BookOpen },
@@ -42,7 +41,7 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
           <div className="flex items-center space-x-2">
             <img 
               src="/logo.png" 
-              alt="ALL IN A Logo" 
+              alt="Mindhaven Logo" 
               className="w-8 h-8 object-contain"
             />
             <span className="font-bold text-xl text-gray-800">Mindhaven</span>
@@ -90,7 +89,7 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
                     )}
                   </div>
                   <span className="text-sm font-medium hidden lg:block">
-                    {user.displayName || user.email?.split('@')[0] || 'User'}
+                    Profile
                   </span>
                 </button>
                 <Button

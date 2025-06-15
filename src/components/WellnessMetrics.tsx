@@ -380,7 +380,7 @@ export const WellnessMetrics = () => {
             className="w-8 h-8 object-contain mr-2" 
           />
           <h2 className="text-xl font-bold text-gray-900">
-            {isQuizCompleted ? 'Your ALL IN A Personalized Metrics' : 'ALL IN A Wellness Metrics'}
+            {isQuizCompleted ? 'Your Mindhaven Personalized Metrics' : 'Mindhaven Wellness Metrics'}
           </h2>        </div>
         
         {lastUpdated && (

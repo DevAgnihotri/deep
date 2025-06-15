@@ -4,10 +4,27 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft } from 'lucide-react';
+import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft, MessageCircle, Sun } from 'lucide-react';
 import DepressionQuiz, { DepressionQuizResult } from '@/components/DepressionQuizAdvanced';
 import PersonalityQuizEnhanced, { PersonalityQuizResult } from '@/components/PersonalityQuizEnhanced';
 import AssessmentHistory from '@/components/AssessmentHistory';
+
+interface PersonalizationInsights {
+  primaryConcern: string;
+  mood: string;
+  experience: string;
+  contentPreference: string;
+  preferredTime: string;
+  recommendations: {
+    therapyType: string;
+    contentTypes: string[];
+    urgency: string;
+    metrics: {
+      focus: string[];
+      priority: string[];
+    };
+  };
+}
 
 interface MentalHealthAssessmentPageProps {
   onNavigate?: (section: string) => void;
@@ -195,16 +212,16 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
 
     return advice;
   };
-
   const resetAssessments = () => {
     setDepressionResult(null);
     setPersonalityResult(null);
     setCombinedResults(null);
     localStorage.removeItem('depressionResult');
     localStorage.removeItem('personalityResult');
-    localStorage.removeItem('combinedResults');
-    setActiveTab('overview');
-  };  const getRiskColor = (risk: string) => {
+    localStorage.removeItem('combinedResults');    setActiveTab('overview');
+  };
+
+  const getRiskColor = (risk: string) => {
     switch (risk) {
       case "Low Risk": return "bg-green-100 text-green-800 border-green-200";
       case "Moderate Risk": return "bg-yellow-100 text-yellow-800 border-yellow-200";
@@ -232,8 +249,7 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
           <CardTitle className="flex items-center justify-center space-x-2">
             <Brain className="h-6 w-6 text-blue-600" />
             <span>Comprehensive Mental Health Assessment</span>
-          </CardTitle>
-          <CardDescription>
+          </CardTitle>          <CardDescription>
             AI-powered depression screening and lifestyle risk assessment with personalized recommendations
           </CardDescription>
         </CardHeader>
@@ -830,9 +846,8 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
                 </Card>
               </div>
             );
-          })()}
-        </TabsContent>
-
+          })()}        </TabsContent>
+        
         <TabsContent value="history">
           <AssessmentHistory />
         </TabsContent>

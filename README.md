@@ -1,15 +1,16 @@
-# ALL IN A - Mental Health & Wellness Platform
+# Mindhaven - Mental Health & Wellness Platform
 
 <div align="center">
-  <img src="public/logo.png" alt="ALL IN A Logo" width="100" height="100" />
-  
-  **ALL IN A** is a comprehensive mental health and wellness platform that empowers users to take control of their wellness journey through personalized tools, expert support, AI-powered assistance, and evidence-based interventions.
-  
-  [![GitHub repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/DevAgnihotri/ALL-IN-A)
-  [![React](https://img.shields.io/badge/React-18.0+-blue?logo=react)](https://reactjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://www.typescriptlang.org/)
-  [![Firebase](https://img.shields.io/badge/Firebase-Integrated-orange?logo=firebase)](https://firebase.google.com/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0+-blue?logo=tailwindcss)](https://tailwindcss.com/)
+  <img src="public/logo.png" alt="Mindhaven Logo" width="100" height="100" />
+
+**Mindhaven** is a comprehensive mental health and wellness platform that empowers users to take control of their wellness journey through personalized tools, expert support, AI-powered assistance, and evidence-based interventions.
+
+[![GitHub repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/DevAgnihotri/Mindhaven)
+[![React](https://img.shields.io/badge/React-18.0+-blue?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-Integrated-orange?logo=firebase)](https://firebase.google.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0+-blue?logo=tailwindcss)](https://tailwindcss.com/)
+
 </div>
 
 ## 🌟 Features
@@ -89,8 +90,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/DevAgnihotri/ALL-IN-A.git
-cd ALL-IN-A
+git clone https://github.com/DevAgnihotri/Mindhaven.git
+cd Mindhaven
 ```
 
 ### 2. Install Dependencies
@@ -198,7 +199,7 @@ firebase deploy
 
 ## 🤝 Contributing
 
-We welcome contributions to improve ALL IN A! Please follow these steps:
+We welcome contributions to improve Mindhaven! Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -220,9 +221,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support & Contact
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/DevAgnihotri/ALL-IN-A/issues)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/DevAgnihotri/Mindhaven/issues)
 - **Developer**: DevAgnihotri
-- **Project Repository**: https://github.com/DevAgnihotri/ALL-IN-A
+- **Project Repository**: https://github.com/DevAgnihotri/Mindhaven
 
 ## 🙏 Acknowledgments
 

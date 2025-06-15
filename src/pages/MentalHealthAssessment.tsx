@@ -14,12 +14,33 @@ import {
   TrendingUp,
   Lightbulb,
   ArrowRight,
-  BarChart3
+  BarChart3,
+  MessageCircle,
+  Sun,
+  Sparkles
 } from "lucide-react";
 import { DepressionQuiz } from "@/components/DepressionQuiz";
 import { PersonalityQuiz } from "@/components/PersonalityQuizAdvanced";
+import { PersonalizationQuiz } from "@/components/PersonalizationQuiz";
 import { aiAdviceService, getCrisisResources } from "@/lib/aiAdviceService";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+
+interface PersonalizationInsights {
+  primaryConcern: string;
+  mood: string;
+  experience: string;
+  contentPreference: string;
+  preferredTime: string;
+  recommendations: {
+    therapyType: string;
+    contentTypes: string[];
+    urgency: string;
+    metrics: {
+      focus: string[];
+      priority: string[];
+    };
+  };
+}
 
 interface QuizResults {
   depression?: {
@@ -39,6 +60,8 @@ export default function MentalHealthAssessment() {
   const [activeTab, setActiveTab] = useState("overview");
   const [results, setResults] = useState<QuizResults>({});
   const [showCombinedResults, setShowCombinedResults] = useState(false);
+  const [showShareYourDay, setShowShareYourDay] = useState(false);
+  const [shareYourDayCompleted, setShareYourDayCompleted] = useState(false);
 
   const handleDepressionComplete = (score: number, severity: string, answers: number[], recommendations: string[]) => {
     setResults(prev => ({
@@ -53,7 +76,6 @@ export default function MentalHealthAssessment() {
       setShowCombinedResults(true);
     }
   };
-
   const handlePersonalityComplete = (risk: string, answers: number[], recommendations: string[]) => {
     setResults(prev => ({
       ...prev,
@@ -66,6 +88,11 @@ export default function MentalHealthAssessment() {
     } else {
       setShowCombinedResults(true);
     }
+  };  const handleShareYourDayComplete = (insights: PersonalizationInsights) => {
+    setShareYourDayCompleted(true);
+    setShowShareYourDay(false);
+    // You can store the insights if needed
+    console.log("Share Your Day completed:", insights);
   };
 
   const getBothQuizzesCompleted = () => {
@@ -326,8 +353,7 @@ export default function MentalHealthAssessment() {
         <p className="text-gray-600 mb-4">
           Comprehensive evaluation using clinically-validated assessment tools
         </p>
-        
-        {/* Progress Indicator */}
+          {/* Progress Indicator */}
         <div className="max-w-md mx-auto">
           <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
             <span>Assessment Progress</span>
@@ -335,6 +361,82 @@ export default function MentalHealthAssessment() {
           </div>
           <Progress value={getCompletionPercentage()} className="h-2" />
         </div>
+      </div>
+
+      {/* Share Your Day Section */}
+      <div className="mb-8">
+        <Card className="bg-gradient-to-r from-orange-50 via-pink-50 to-purple-50 border-2 border-orange-200 shadow-lg hover:shadow-xl transition-all duration-300">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-3 text-2xl">
+              <div className="relative">
+                <Sun className="w-8 h-8 text-orange-500 animate-pulse" />
+                <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-yellow-400 animate-bounce" />
+              </div>
+              <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent font-bold">
+                Share Your Day
+              </span>
+              {shareYourDayCompleted && <CheckCircle className="w-6 h-6 text-green-500" />}
+            </CardTitle>
+            <p className="text-gray-600 mt-2">
+              🌟 Tell us about your current mood and feelings to get personalized insights 🌟
+            </p>
+          </CardHeader>
+          <CardContent className="text-center space-y-4">
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-orange-100">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <MessageCircle className="w-5 h-5 text-pink-500" />
+                <span className="font-semibold text-gray-800">Quick Daily Check-in</span>
+                <Heart className="w-5 h-5 text-red-400 animate-pulse" />
+              </div>
+              <p className="text-sm text-gray-600 mb-4">
+                This personalized quiz helps us understand your current state of mind and provides 
+                tailored recommendations for your mental wellness journey.
+              </p>
+              <div className="flex justify-center space-x-4">
+                {!shareYourDayCompleted ? (
+                  <Button 
+                    onClick={() => setShowShareYourDay(true)}
+                    className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-6 py-2 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Start Sharing
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                ) : (
+                  <div className="flex items-center gap-2 text-green-600 font-medium">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Daily check-in completed!</span>
+                  </div>
+                )}
+                {shareYourDayCompleted && (
+                  <Button 
+                    onClick={() => setShowShareYourDay(true)}
+                    variant="outline"
+                    className="border-orange-300 text-orange-600 hover:bg-orange-50"
+                  >
+                    Update Response
+                  </Button>
+                )}
+              </div>
+            </div>
+            
+            {/* Benefits Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+              <div className="bg-white/60 rounded-lg p-3 border border-orange-100">
+                <Lightbulb className="w-5 h-5 text-yellow-500 mx-auto mb-2" />
+                <p className="text-xs font-medium text-gray-700">Personalized Insights</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-3 border border-pink-100">
+                <TrendingUp className="w-5 h-5 text-green-500 mx-auto mb-2" />
+                <p className="text-xs font-medium text-gray-700">Track Progress</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-3 border border-purple-100">
+                <Heart className="w-5 h-5 text-red-500 mx-auto mb-2" />
+                <p className="text-xs font-medium text-gray-700">Better Wellbeing</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -495,12 +597,35 @@ export default function MentalHealthAssessment() {
 
         <TabsContent value="depression" className="mt-6">
           <DepressionQuiz onComplete={handleDepressionComplete} />
-        </TabsContent>
-
-        <TabsContent value="personality" className="mt-6">
+        </TabsContent>        <TabsContent value="personality" className="mt-6">
           <PersonalityQuiz onComplete={handlePersonalityComplete} />
         </TabsContent>
       </Tabs>
+
+      {/* Share Your Day Quiz Modal */}
+      {showShareYourDay && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                  <Sun className="w-6 h-6 text-orange-500" />
+                  Share Your Day
+                </h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowShareYourDay(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  ✕
+                </Button>
+              </div>
+              <PersonalizationQuiz onComplete={handleShareYourDayComplete} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

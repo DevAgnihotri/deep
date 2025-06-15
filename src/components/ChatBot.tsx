@@ -16,7 +16,7 @@ export const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm your ALL IN A Companion. How can I support your mental health journey today?\n\n🔹 Type 'help' to see what I can do\n🔹 Ask me about our features\n🔹 Let me guide you around the platform",
+      text: "Hello! I'm your Mindhaven Companion. How can I support your mental health journey today?\n\n🔹 Type 'help' to see what I can do\n🔹 Ask me about our features\n🔹 Let me guide you around the platform",
       isBot: true,
       timestamp: new Date()
     }
@@ -99,7 +99,7 @@ export const ChatBot = () => {
     // Help and navigation commands
     if (message.includes('help') || message.includes('what can you do')) {
       return {
-        response: "🤖 Here's how I can help you navigate ALL IN A:\n\n📚 **Courses**: Say 'courses' or 'learn' to explore mental health courses\n📅 **Book Therapy**: Say 'book' or 'therapist' to schedule sessions\n👥 **Communities**: Say 'community' to join support groups\n📊 **Metrics**: Say 'metrics' to view your wellness data\n💬 **Chat**: I'm here for emotional support anytime\n🏠 **Home**: Say 'home' to return to dashboard\n\nJust ask me anything about mental health or tell me how you're feeling!"
+        response: "🤖 Here's how I can help you navigate Mindhaven:\n\n📚 **Courses**: Say 'courses' or 'learn' to explore mental health courses\n📅 **Book Therapy**: Say 'book' or 'therapist' to schedule sessions\n👥 **Communities**: Say 'community' to join support groups\n📊 **Metrics**: Say 'metrics' to view your wellness data\n💬 **Chat**: I'm here for emotional support anytime\n🏠 **Home**: Say 'home' to return to dashboard\n\nJust ask me anything about mental health or tell me how you're feeling!"
       };
     }
 
@@ -186,13 +186,13 @@ export const ChatBot = () => {
 
     // General mental health support
     const supportiveResponses = [
-      "I understand you're going through something difficult. ALL IN A is here to support you - seeking help is a sign of strength. 💪\n\nWould you like me to guide you to our courses, therapist booking, or communities for additional support?",
+      "I understand you're going through something difficult. Mindhaven is here to support you - seeking help is a sign of strength. 💪\n\nWould you like me to guide you to our courses, therapist booking, or communities for additional support?",
       
       "It sounds like you're dealing with some challenging emotions. Remember that your feelings are valid and it's okay to not be okay sometimes. 🤗\n\nOur platform has many resources - would you like to explore breathing exercises, mindfulness courses, or connect with a therapist?",
       
       "Thank you for sharing that with me. You're incredibly brave for reaching out. 🌟\n\nConsider speaking with one of our licensed therapists - I can help you book a session right now if you'd like.",
       
-      "Those feelings are completely valid. Many in our ALL IN A community experience similar challenges - you're not alone in this journey. 👥\n\nWould you like me to take you to our support communities or show you some helpful courses?",
+      "Those feelings are completely valid. Many in our Mindhaven community experience similar challenges - you're not alone in this journey. 👥\n\nWould you like me to take you to our support communities or show you some helpful courses?",
       
       "I can help you break this down into smaller, manageable steps. Taking one small action today can make a difference. 🌱\n\nWhat feels like the most pressing concern right now? I can guide you to the right resources.",
       
@@ -228,8 +228,8 @@ export const ChatBot = () => {
           <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-lg p-4 flex-shrink-0">
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center text-base">
-                <img src="/logo.png" alt="ALL IN A Logo" className="w-5 h-5 mr-2 object-contain" />
-                ALL IN A Companion
+                <img src="/logo.png" alt="Mindhaven Logo" className="w-5 h-5 mr-2 object-contain" />
+                Mindhaven Companion
               </CardTitle>
               <Button
                 variant="ghost"
@@ -319,7 +319,7 @@ export const ChatBot = () => {
                   onClick={() => {
                     setMessages([{
                       id: 1,
-                      text: "Hello! I'm your ALL IN A Companion. How can I support your mental health journey today?\n\n🔹 Type 'help' to see what I can do\n🔹 Ask me about our features\n🔹 Let me guide you around the platform",
+                      text: "Hello! I'm your Mindhaven Companion. How can I support your mental health journey today?\n\n🔹 Type 'help' to see what I can do\n🔹 Ask me about our features\n🔹 Let me guide you around the platform",
                       isBot: true,
                       timestamp: new Date()
                     }]);

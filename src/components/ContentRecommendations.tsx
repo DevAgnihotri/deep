@@ -3,10 +3,13 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Headphones, BookOpen, Youtube, Clock, Star, ChevronDown, ChevronUp } from "lucide-react";
+import { Play, Headphones, BookOpen, Youtube, Clock, Star, ChevronDown, ChevronUp, Gamepad2, Heart, Brain, Sparkles, Trophy, Users, Zap } from "lucide-react";
 
 interface ContentRecommendationsProps {
-  insights?: any;
+  insights?: {
+    primaryConcern?: string;
+    [key: string]: unknown;
+  };
 }
 
 export const ContentRecommendations = ({ insights }: ContentRecommendationsProps) => {
@@ -14,6 +17,7 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
   const [expandedPlaylists, setExpandedPlaylists] = useState<number | null>(null);
   const [expandedVideos, setExpandedVideos] = useState<number | null>(null);
   const [expandedLectures, setExpandedLectures] = useState<number | null>(null);
+  const [expandedGames, setExpandedGames] = useState<number | null>(null);
 
   const podcasts = [
     {
@@ -117,6 +121,69 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
       duration: "38 min",
       topic: "Therapy Techniques",
       embedUrl: "https://www.youtube.com/embed/PrVRGFpC7mc?si=HlD7QPDRu9nFgG86"
+    }
+  ];
+
+  const games = [
+    {
+      title: "LetsLove 13",
+      subtitle: "Puzzle of Hearts",
+      description: "A heartwarming puzzle game about connection and love that helps build emotional resilience through gentle challenges",
+      difficulty: "Beginner Friendly",
+      duration: "10-15 min",
+      category: "Mindful Puzzle",
+      benefits: "Promotes positive thinking and emotional connection",
+      therapeuticFocus: "Emotional Wellness",
+      gameUrl: "/games/letslove-13/index.html",
+      image: "💝",
+      bgGradient: "from-pink-400 via-rose-400 to-red-400",
+      cardGradient: "from-pink-50 via-rose-50 to-red-50",
+      hoverGradient: "from-pink-100 via-rose-100 to-red-100",
+      iconColor: "text-pink-600",
+      skills: ["Emotional Intelligence", "Problem Solving", "Mindfulness"],
+      mood: "Uplifting",
+      rating: 4.9,
+      players: "210+ played"
+    },
+    {
+      title: "MarioBuddy",
+      subtitle: "Adventure of Friendship",
+      description: "A friendly adventure game that encourages exploration, friendship, and builds confidence through supportive gameplay mechanics",
+      difficulty: "Intermediate", 
+      duration: "15-20 min",
+      category: "Social Adventure",
+      benefits: "Builds confidence and social skills through gameplay",
+      therapeuticFocus: "Social Confidence",
+      gameUrl: "/games/mariobuddy/index.html",
+      image: "�",
+      bgGradient: "from-blue-400 via-purple-400 to-indigo-400",
+      cardGradient: "from-blue-50 via-purple-50 to-indigo-50",
+      hoverGradient: "from-blue-100 via-purple-100 to-indigo-100",
+      iconColor: "text-blue-600",
+      skills: ["Social Skills", "Confidence Building", "Creative Thinking"],
+      mood: "Empowering",
+      rating: 4.8,
+      players: "180+ played"
+    },
+    {
+      title: "Aura Bloom",
+      subtitle: "Depression Recovery Platform",
+      description: "A simple platform with activities specifically designed to tackle depression through mindful exercises and therapeutic games",
+      difficulty: "All Levels", 
+      duration: "5-30 min",
+      category: "Depression Support",
+      benefits: "Provides tools and activities to combat depression",
+      therapeuticFocus: "Depression Recovery",
+      gameUrl: "https://depremoval.vercel.app/",
+      image: "🌸",
+      bgGradient: "from-green-400 via-teal-400 to-cyan-400",
+      cardGradient: "from-green-50 via-teal-50 to-cyan-50",
+      hoverGradient: "from-green-100 via-teal-100 to-cyan-100",
+      iconColor: "text-green-600",
+      skills: ["Depression Management", "Mindfulness", "Self-Care"],
+      mood: "Healing",
+      rating: 4.7,
+      players: "150+ helped"
     }
   ];
 
@@ -357,6 +424,208 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
                   )}
                 </div>
               ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Interactive Games Section - SPECIAL EDITION */}
+        <Card className="bg-white/90 backdrop-blur-sm lg:col-span-2 border-2 border-gradient-to-r from-purple-200 to-pink-200 shadow-2xl">
+          <CardHeader className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-t-lg">
+            <CardTitle className="flex items-center justify-center text-2xl font-bold">
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <Gamepad2 className="w-8 h-8 animate-pulse" />
+                  <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-yellow-300 animate-bounce" />
+                </div>
+                <span className="bg-gradient-to-r from-yellow-200 to-white bg-clip-text text-transparent">
+                  Therapeutic Gaming Zone
+                </span>
+                <Heart className="w-6 h-6 text-pink-200 animate-pulse" />
+              </div>
+            </CardTitle>
+            <p className="text-center text-purple-100 mt-2 font-medium">
+              🎮 Interactive wellness games designed to boost your mental health journey ✨
+            </p>
+          </CardHeader>
+          <CardContent className="p-8 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {games.map((game, index) => (
+                <div key={index} className="group relative">
+                  {/* Main Game Card */}
+                  <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${game.cardGradient} hover:${game.hoverGradient} transition-all duration-500 transform hover:scale-105 hover:shadow-2xl border-2 border-white/50 hover:border-white/80`}>
+                    {/* Floating Elements */}
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <div className="bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-gray-700 flex items-center space-x-1">
+                        <Star className="w-3 h-3 text-yellow-500" />
+                        <span>{game.rating}</span>
+                      </div>
+                      <div className="bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+                        {game.players}
+                      </div>
+                    </div>
+
+                    {/* Game Content */}
+                    <div className="p-6">
+                      {/* Header with Icon */}
+                      <div className="flex items-start space-x-4 mb-4">
+                        <div className={`w-20 h-20 bg-gradient-to-br ${game.bgGradient} rounded-2xl flex items-center justify-center text-3xl shadow-lg transform group-hover:rotate-12 transition-transform duration-300`}>
+                          {game.image}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-xl text-gray-900 mb-1">{game.title}</h4>
+                          <p className={`text-sm font-semibold ${game.iconColor} mb-2`}>{game.subtitle}</p>
+                          <div className="flex items-center space-x-2 mb-2">
+                            <Badge className={`bg-gradient-to-r ${game.bgGradient} text-white border-none text-xs`}>
+                              {game.category}
+                            </Badge>
+                            <Badge variant="outline" className="text-xs bg-white/80">
+                              {game.mood}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-sm text-gray-700 mb-4 leading-relaxed">{game.description}</p>
+
+                      {/* Stats Row */}
+                      <div className="flex items-center justify-between mb-4 text-xs text-gray-600">
+                        <div className="flex items-center space-x-1">
+                          <Clock className="w-3 h-3" />
+                          <span>{game.duration}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Trophy className="w-3 h-3" />
+                          <span>{game.difficulty}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Brain className="w-3 h-3" />
+                          <span>{game.therapeuticFocus}</span>
+                        </div>
+                      </div>
+
+                      {/* Skills Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {game.skills.map((skill, skillIndex) => (
+                          <span key={skillIndex} className="bg-white/70 backdrop-blur-sm text-xs px-2 py-1 rounded-full text-gray-700 border border-gray-200">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Button */}
+                      <div className="flex space-x-3">
+                        <Button 
+                          onClick={() => setExpandedGames(expandedGames === index ? null : index)}
+                          variant="outline"
+                          className="flex-1 bg-white/80 hover:bg-white transition-all duration-300"
+                        >
+                          {expandedGames === index ? (
+                            <>
+                              <ChevronUp className="w-4 h-4 mr-2" />
+                              Less Info
+                            </>
+                          ) : (
+                            <>
+                              <Sparkles className="w-4 h-4 mr-2" />
+                              Learn More
+                            </>
+                          )}
+                        </Button>
+                        <Button 
+                          onClick={() => window.open(game.gameUrl, '_blank')}
+                          className={`flex-1 bg-gradient-to-r ${game.bgGradient} hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-white border-none`}
+                        >
+                          <Gamepad2 className="w-4 h-4 mr-2" />
+                          Play Now
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Expanded Content */}
+                    {expandedGames === index && (
+                      <div className="border-t-2 border-white/50 bg-white/60 backdrop-blur-sm p-6 animate-in slide-in-from-top duration-300">
+                        <div className="space-y-4">
+                          {/* Therapeutic Benefits */}
+                          <div className="bg-white/80 rounded-xl p-4">
+                            <h5 className="font-bold text-gray-800 mb-3 flex items-center">
+                              <Heart className="w-5 h-5 mr-2 text-pink-500" />
+                              Therapeutic Benefits
+                            </h5>
+                            <p className="text-sm text-gray-700 leading-relaxed">{game.benefits}</p>
+                          </div>
+
+                          {/* How It Helps */}
+                          <div className="bg-white/80 rounded-xl p-4">
+                            <h5 className="font-bold text-gray-800 mb-3 flex items-center">
+                              <Brain className="w-5 h-5 mr-2 text-purple-500" />
+                              Mental Health Impact
+                            </h5>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                              {game.skills.map((skill, skillIndex) => (
+                                <div key={skillIndex} className="bg-gradient-to-r from-white to-gray-50 rounded-lg p-3 text-center">
+                                  <div className="text-lg mb-1">
+                                    {skillIndex === 0 && <Heart className="w-5 h-5 mx-auto text-red-500" />}
+                                    {skillIndex === 1 && <Zap className="w-5 h-5 mx-auto text-yellow-500" />}
+                                    {skillIndex === 2 && <Users className="w-5 h-5 mx-auto text-blue-500" />}
+                                  </div>
+                                  <p className="text-xs font-medium text-gray-700">{skill}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Call to Action */}
+                          <div className="flex justify-center space-x-4 pt-2">
+                            <Button 
+                              onClick={() => window.open(game.gameUrl, '_blank')}
+                              size="lg"
+                              className={`bg-gradient-to-r ${game.bgGradient} hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-white border-none px-8`}
+                            >
+                              <Gamepad2 className="w-5 h-5 mr-2" />
+                              Start Your Journey
+                              <Sparkles className="w-4 h-4 ml-2 animate-pulse" />
+                            </Button>
+                            <Button 
+                              variant="outline"
+                              onClick={() => setExpandedGames(null)}
+                              className="bg-white/80 hover:bg-white"
+                            >
+                              Close
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Banner */}
+            <div className="mt-8 text-center bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 rounded-2xl p-6 border-2 border-white/50">
+              <div className="flex justify-center items-center space-x-3 mb-3">
+                <Sparkles className="w-6 h-6 text-purple-500 animate-pulse" />
+                <h3 className="text-lg font-bold text-gray-800">Gamified Mental Wellness</h3>
+                <Sparkles className="w-6 h-6 text-pink-500 animate-pulse" />
+              </div>
+              <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+                These games are specifically designed to support your mental health journey through interactive experiences that promote positive thinking, emotional regulation, and social connection. Play mindfully and enjoy the therapeutic benefits! 🌟
+              </p>
+              <div className="flex justify-center items-center mt-4 space-x-6 text-xs text-gray-500">
+                <div className="flex items-center space-x-1">
+                  <Heart className="w-4 h-4 text-red-400" />
+                  <span>Wellness Focused</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Brain className="w-4 h-4 text-purple-400" />
+                  <span>Evidence-Based</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Users className="w-4 h-4 text-blue-400" />
+                  <span>Community Approved</span>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

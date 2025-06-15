@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Hero } from "@/components/Hero";
-import { PersonalizationQuiz } from "@/components/PersonalizationQuiz";
 import { TherapistBooking } from "@/components/TherapistBooking";
 import { ContentRecommendations } from "@/components/ContentRecommendations";
 import { ChatBot } from "@/components/ChatBot";
@@ -28,17 +27,10 @@ const Index = () => {
     };
   }, []);
 
-  const handleQuizComplete = (insights: unknown) => {
-    setUserInsights(insights);
-    setCurrentSection("home"); // Stay on home to show health metrics
-  };
-
   const renderCurrentSection = () => {
     switch (currentSection) {
       case "assessment":
         return <MentalHealthAssessmentPage onNavigate={setCurrentSection} />;
-      case "quiz":
-        return <PersonalizationQuiz onComplete={handleQuizComplete} />;
       case "courses":
         return <Courses />;
       case "booking":
@@ -48,7 +40,7 @@ const Index = () => {
       case "profile":
         return <Profile />;
       default:
-        return <Hero onStartJourney={() => setCurrentSection("quiz")} />;
+        return <Hero onStartJourney={() => {}} />;
     }
   };
 
