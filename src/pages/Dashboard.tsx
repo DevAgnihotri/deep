@@ -11,13 +11,19 @@ import {
   MentalHealthTrendChart,
   InterventionEffectivenessChart,
   AgeGroupRiskChart,
-  DemographicRiskChart,
-  insights
+  MaternalMentalHealthChart,
+  MenstrualHealthImpactChart,
+  WorkLifeBalanceChart,
+  HormoneRelatedIssuesChart,
+  RelationshipImpactChart,
+  SleepQualityImpactChart,
+  FinancialStressChart,
+  insights,
+  advancedInsights
 } from '../components/charts';
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
-
   const dataCards = [
     {
       icon: Users,
@@ -37,35 +43,59 @@ const Dashboard: React.FC = () => {
     },
     {
       icon: Heart,
-      title: "Critical Cases",
-      value: `${insights.criticalCasePercentage}%`,
-      subtitle: "Requiring immediate intervention",
-      color: "bg-gradient-to-r from-orange-500 to-orange-600",
-      trend: "2 in 5 women affected"
+      title: "Maternal Mental Health",
+      value: `${advancedInsights.maternalMentalHealthRate}%`,
+      subtitle: "Mothers experiencing challenges",
+      color: "bg-gradient-to-r from-pink-500 to-pink-600",
+      trend: "Postpartum peak at 0-3 months"
     },
     {
       icon: Brain,
-      title: "Lifestyle Analysis",
-      value: insights.lifestyleSample.toLocaleString(),
-      subtitle: "Women in lifestyle study",
+      title: "Menstrual Impact",
+      value: `${advancedInsights.menstrualImpactRate}%`,
+      subtitle: "Cycle affects mood",
       color: "bg-gradient-to-r from-purple-500 to-purple-600",
-      trend: `${insights.lifestyleRiskPercentage}% at risk`
+      trend: "82% report mood changes"
     },
     {
       icon: Activity,
-      title: "Sleep Issues",
-      value: "78.2%",
-      subtitle: "Most common indicator",
-      color: "bg-gradient-to-r from-indigo-500 to-indigo-600",
-      trend: "Primary warning sign"
+      title: "Work-Life Stress",
+      value: `${advancedInsights.workRelatedStressRate}%`,
+      subtitle: "Career burnout reported",
+      color: "bg-gradient-to-r from-orange-500 to-orange-600",
+      trend: "Peak at ages 29-35"
     },
     {
       icon: Shield,
-      title: "Mentally Healthy",
-      value: "18.7%",
-      subtitle: "Thriving women",
-      color: "bg-gradient-to-r from-green-500 to-green-600",
-      trend: "Only 1 in 5 women"
+      title: "Sleep Quality Issues",
+      value: `${advancedInsights.sleepDisorderRate}%`,
+      subtitle: "Poor sleep quality",
+      color: "bg-gradient-to-r from-indigo-500 to-indigo-600",
+      trend: "Strongest mental health predictor"
+    },
+    {
+      icon: TrendingUp,
+      title: "Financial Stress",
+      value: `${advancedInsights.financialStressRate}%`,
+      subtitle: "Money worries affecting mental health",
+      color: "bg-gradient-to-r from-yellow-500 to-yellow-600",
+      trend: "Low income = 72% depression risk"
+    },
+    {
+      icon: Heart,
+      title: "Body Image Concerns",
+      value: `${advancedInsights.bodyImageConcernRate}%`,
+      subtitle: "Appearance-related stress",
+      color: "bg-gradient-to-r from-rose-500 to-rose-600",
+      trend: "Social media pressure high"
+    },
+    {
+      icon: Users,
+      title: "Social Support Deficit",
+      value: `${advancedInsights.socialSupportDeficitRate}%`,
+      subtitle: "Lacking strong support systems",
+      color: "bg-gradient-to-r from-cyan-500 to-cyan-600",
+      trend: "Family support most impactful"
     }
   ];
 
@@ -141,9 +171,7 @@ const Dashboard: React.FC = () => {
               <div className="text-purple-100 mt-2">Our mission at Mindhaven</div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Data Cards Grid */}
+        </motion.div>        {/* Data Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {dataCards.map((card, index) => (
             <motion.div
@@ -296,43 +324,150 @@ const Dashboard: React.FC = () => {
             <h2 className="text-xl font-bold text-gray-800">Intervention Effectiveness Analysis</h2>
           </div>
           <InterventionEffectivenessChart />
-        </motion.div>
+        </motion.div>        {/* Female-Specific Charts - Row 1 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Maternal Mental Health Chart */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.45 }}
+          >
+            <div className="flex items-center mb-4">
+              <Heart className="w-6 h-6 text-purple-600 mr-2" />
+              <h2 className="text-xl font-bold text-gray-800">Maternal Mental Health Journey</h2>
+            </div>
+            <MaternalMentalHealthChart />
+          </motion.div>
 
-        {/* Demographic Risk Analysis - Full Width */}
+          {/* Work-Life Balance Chart */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.5 }}
+          >
+            <div className="flex items-center mb-4">
+              <BarChart3 className="w-6 h-6 text-purple-600 mr-2" />
+              <h2 className="text-xl font-bold text-gray-800">Work-Life Balance Impact</h2>
+            </div>
+            <WorkLifeBalanceChart />
+          </motion.div>
+        </div>
+
+        {/* Female-Specific Charts - Row 2 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Relationship Impact Chart */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.55 }}
+          >
+            <div className="flex items-center mb-4">
+              <Users className="w-6 h-6 text-purple-600 mr-2" />
+              <h2 className="text-xl font-bold text-gray-800">Relationship Status & Mental Health</h2>
+            </div>
+            <RelationshipImpactChart />
+          </motion.div>
+
+          {/* Sleep Quality Impact */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.6 }}
+          >
+            <div className="flex items-center mb-4">
+              <Activity className="w-6 h-6 text-purple-600 mr-2" />
+              <h2 className="text-xl font-bold text-gray-800">Sleep Quality vs Mental Health</h2>
+            </div>
+            <SleepQualityImpactChart />
+          </motion.div>
+        </div>
+
+        {/* Financial Stress Chart - Full Width */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.45 }}
+          transition={{ delay: 1.65 }}
+          className="mb-8"
+        >
+          <div className="flex items-center mb-4">
+            <TrendingUp className="w-6 h-6 text-purple-600 mr-2" />
+            <h2 className="text-xl font-bold text-gray-800">Financial Stress Impact by Income</h2>
+          </div>
+          <FinancialStressChart />
+        </motion.div>
+
+        {/* Menstrual Health Impact - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.7 }}
+          className="mb-8"
+        >
+          <div className="flex items-center mb-4">
+            <Heart className="w-6 h-6 text-purple-600 mr-2" />
+            <h2 className="text-xl font-bold text-gray-800">Menstrual Cycle Mental Health Impact</h2>
+          </div>
+          <MenstrualHealthImpactChart />
+        </motion.div>
+
+        {/* Hormone Related Issues - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.75 }}
           className="mb-8"
         >
           <div className="flex items-center mb-4">
             <Activity className="w-6 h-6 text-purple-600 mr-2" />
-            <h2 className="text-xl font-bold text-gray-800">Demographic Risk Correlation</h2>
+            <h2 className="text-xl font-bold text-gray-800">Menstrual Cycle Mood Tracking</h2>
           </div>
-          <DemographicRiskChart />
+          <HormoneRelatedIssuesChart />
         </motion.div>{/* Additional Insights */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
           className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20"
-        >
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Key Research Insights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="text-center p-6 rounded-xl bg-gradient-to-br from-red-50 to-red-100">
-              <div className="text-3xl font-bold text-red-600 mb-2">81.3%</div>
-              <div className="text-red-800 font-medium">Clinical Depression Rate</div>
-              <div className="text-sm text-red-600 mt-2">4 out of 5 women affected</div>
+        >          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Female-Specific Mental Health Insights</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center p-6 rounded-xl bg-gradient-to-br from-pink-50 to-pink-100">
+              <div className="text-3xl font-bold text-pink-600 mb-2">82.4%</div>
+              <div className="text-pink-800 font-medium">Menstrual Cycle Impact</div>
+              <div className="text-sm text-pink-600 mt-2">Mood changes during cycle</div>
+            </div>
+            <div className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100">
+              <div className="text-3xl font-bold text-purple-600 mb-2">68.3%</div>
+              <div className="text-purple-800 font-medium">Maternal Mental Health</div>
+              <div className="text-sm text-purple-600 mt-2">Mothers experiencing challenges</div>
+            </div>
+            <div className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+              <div className="text-3xl font-bold text-blue-600 mb-2">67.9%</div>
+              <div className="text-blue-800 font-medium">Sleep Quality Issues</div>
+              <div className="text-sm text-blue-600 mt-2">Poor sleep affecting mental health</div>
             </div>
             <div className="text-center p-6 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100">
-              <div className="text-3xl font-bold text-orange-600 mb-2">65.7%</div>
-              <div className="text-orange-800 font-medium">Lifestyle Risk Factor</div>
-              <div className="text-sm text-orange-600 mt-2">Based on daily habits</div>
+              <div className="text-3xl font-bold text-orange-600 mb-2">74.8%</div>
+              <div className="text-orange-800 font-medium">Work-Related Stress</div>
+              <div className="text-sm text-orange-600 mt-2">Career burnout reported</div>
             </div>
-            <div className="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100">
-              <div className="text-3xl font-bold text-green-600 mb-2">78.2%</div>
-              <div className="text-green-800 font-medium">Sleep Issues Prevalent</div>
-              <div className="text-sm text-green-600 mt-2">Primary warning indicator</div>
+          </div>
+          
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl">
+              <h3 className="text-lg font-bold text-gray-800 mb-3">Critical Age Groups</h3>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li>• <span className="font-semibold text-red-600">18-24 years:</span> 87.2% at risk - highest vulnerability</li>
+                <li>• <span className="font-semibold text-orange-600">25-34 years:</span> 84.1% at risk - career pressure peak</li>
+                <li>• <span className="font-semibold text-yellow-600">35-44 years:</span> 79.3% at risk - family/career balance</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl">
+              <h3 className="text-lg font-bold text-gray-800 mb-3">Key Protective Factors</h3>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li>• <span className="font-semibold text-green-600">Excellent Sleep:</span> 8.2/10 mental health score</li>
+                <li>• <span className="font-semibold text-blue-600">Strong Relationships:</span> 50% lower depression risk</li>
+                <li>• <span className="font-semibold text-purple-600">Financial Security:</span> 72% → 19% risk reduction</li>
+              </ul>
             </div>
           </div>
         </motion.div>        {/* Call to Action */}
@@ -342,10 +477,10 @@ const Dashboard: React.FC = () => {
           transition={{ delay: 1.6 }}
           className="text-center mt-12 mb-8"
         >
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-8 text-white">
-            <h2 className="text-2xl font-bold mb-4">Take Action Today</h2>
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-8 text-white">            <h2 className="text-2xl font-bold mb-4">Transform Women's Mental Health</h2>
             <p className="text-lg mb-6 text-purple-100">
-              These insights show the urgent need for mental health support. At Mindhaven, we're committed to helping every woman thrive.
+              From maternal wellness to menstrual health, from work-life balance to financial stress - 
+              every woman's journey is unique. Mindhaven provides personalized support for every stage of life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
