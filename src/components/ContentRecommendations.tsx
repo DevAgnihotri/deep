@@ -146,7 +146,7 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
       players: "210+ played"
     },
     {
-      title: "MarioBuddy",
+      title: "Cute Pico",
       subtitle: "Adventure of Friendship",
       description: "A friendly adventure game that encourages exploration, friendship, and builds confidence through supportive gameplay mechanics",
       difficulty: "Intermediate", 
