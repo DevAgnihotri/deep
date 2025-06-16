@@ -299,7 +299,7 @@ const day1Events = [
   ...handleEvolution(),
   () => drawEggBaby(),
   `Oh! It's an ${MUSHROOMBABY()} !`,
-  "It's an egg with a diaper 🥚🧷 ! That's pretty cute 😍 !",
+  "It's a little mushroom with a tiny smile 🍄😊 ! That's pretty cute 😍 !",
   `When it cries 🥺, you'll have to feed it 🍗, give it water 💦, give it a bath 🛁, or play with it 🧸 !`,
   `${BUTTON_INSTRUCTIONS}`,
   `Your ${PICOBUDDY()} will reach full maturity in 13 days!`,
