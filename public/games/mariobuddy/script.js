@@ -219,7 +219,7 @@ const EYE_EMOJIS = ['👁️', '👁️‍🗨️', '👀'];
 const BUTTON_EMOJI = '🟣 🟣 🟣 🟣 ';
 
 // Names
-const PICOBUDDY = () => {
+const MARIOBUDDY = () => {
   const emoji = getRandom(BUD_EMOJIS);
   return `${emoji}MarioBuddy${emoji}`;
 };
@@ -237,12 +237,12 @@ const FINAL_FORM = '🌀final form🌀';
 // Game Phrases
 const BUTTON_INSTRUCTIONS = `Use the buttons below the screen ${BUTTON_EMOJI} !`;
 
-const NOT_NOW = `Your ${PICOBUDDY()} doesn't need this right now!!`;
+const NOT_NOW = `Your ${MARIOBUDDY()} doesn't need this right now!!`;
 const J_NOT_NOW = 'ちょっと違うね。。！ 😅';
 const PRAISE_PHRASES = [
   'Good job!',
   'Nicely done!',
-  `Your ${PICOBUDDY()} is pleased!`,
+  `Your ${MARIOBUDDY()} is pleased!`,
   'Way to go!',
   'You rule 😎 !',
   'You rock 🎸 !',
@@ -255,13 +255,13 @@ const J_PRAISE_PHRASES = [
 ];
 const DAY_FINISHED_PHRASES = [
   "OK, I think that's all for today!",
-  `OK, time for your ${PICOBUDDY()}'s bedtime!`,
-  `OK, time for your ${PICOBUDDY()} to sleep now!`,
+  `OK, time for your ${MARIOBUDDY()}'s bedtime!`,
+  `OK, time for your ${MARIOBUDDY()} to sleep now!`,
 ];
 const J_DAY_FINISHED_PHRASES = 'OK, 終わりました！　おやすみなさい！';
 const PROCEED = `${
   DAY === 6 ? J_DAY_FINISHED_PHRASES : getRandom(DAY_FINISHED_PHRASES)
-} Click the button to the right of your ${PICOBUDDY()} device to proceed!`;
+} Click the button to the right of your ${MARIOBUDDY()} device to proceed!`;
 const CHECK_LIST = 'Check out the list of current demands!';
 const SLOW = 'You were a little too slow... 🐢';
 const J_SLOW = '遅いな。。。🐢';
@@ -272,8 +272,8 @@ const NOT_OMINOUS = 'I assure you, this is totally normal and not ominous 😎 !
 const EVOLVING = "Oh! It's evolving!";
 
 // Script End phrases
-const TREATED = `you treated your ${PICOBUDDY()} `;
-const TREATED_RESULT = `Your ${PICOBUDDY()} sees this as a sign of`;
+const TREATED = `you treated your ${MARIOBUDDY()} `;
+const TREATED_RESULT = `Your ${MARIOBUDDY()} sees this as a sign of`;
 
 const REASSURING_PHRASES = [
   "Don't worry!",
@@ -295,28 +295,28 @@ const REASSURING_PHRASES = [
 
 const day1Events = [
   'Hi 👋 !',
-  `Congratulations on your new ${PICOBUDDY()} !`,
+  `Congratulations on your new ${MARIOBUDDY()} !`,
   ...handleEvolution(),
   () => drawEggBaby(),
   `Oh! It's an ${MUSHROOMBABY()} !`,
   "It's a little mushroom with a tiny smile 🍄😊 ! That's pretty cute 😍 !",
   `When it cries 🥺, you'll have to feed it 🍗, give it water 💦, give it a bath 🛁, or play with it 🧸 !`,
   `${BUTTON_INSTRUCTIONS}`,
-  `Your ${PICOBUDDY()} will reach full maturity in 13 days!`,
+  `Your ${MARIOBUDDY()} will reach full maturity in 13 days!`,
   `${NOT_OMINOUS}`,
-  `Oh! Looks like your ${PICOBUDDY()} needs something!`,
-  `Check out the "Current Demands" list below your ${PICOBUDDY()} device!`,
+  `Oh! Looks like your ${MARIOBUDDY()} needs something!`,
+  `Check out the "Current Demands" list below your ${MARIOBUDDY()} device!`,
   ...runStandardDay(3, 1000),
 ];
 
 const day2Events = [
   "Good morning! Today's a brand new day 🎉 !",
-  `Just to let you know, your ${PICOBUDDY()} should be pretty easy to handle for the first few days 😌 !`,
+  `Just to let you know, your ${MARIOBUDDY()} should be pretty easy to handle for the first few days 😌 !`,
   'But they usually get a bit more demanding as time goes on 😅 !',
   'So enjoy these early days while they last ⏳ !',
   `In the end, our memories 📝 are the most precious things we have 🥰 !`,
   `Everything else just slips away like grains of sand ⌛️, as the universe continues its slow, silent drift towards the eternal nothingness of ${UNBECOMING} .`,
-  `Oh! I think your ${PICOBUDDY()} might be hungry 🍇🍉🥝 !`,
+  `Oh! I think your ${MARIOBUDDY()} might be hungry 🍇🍉🥝 !`,
   CHECK_LIST,
   ...runStandardDay(4, 500),
 ];
@@ -330,7 +330,7 @@ const day3Events = [
 
 const day4Events = [
   'So, actually, before we start today, I have something exciting to share 😁 !',
-  `Your ${PICOBUDDY()} is going to 🐒evolve🚶‍♂️‍➡️ soon!`,
+  `Your ${MARIOBUDDY()} is going to 🐒evolve🚶‍♂️‍➡️ soon!`,
   "I can't wait to see what it will turn into 🦋 !",
   CHECK_LIST,
   ...runStandardDay(10, 0),
@@ -338,13 +338,13 @@ const day4Events = [
 
 const day5Events = [
   'Hey again 👋 ! Today is a very important day...',
-  `Your ${PICOBUDDY()} is going to evolve 😮 !`,
+  `Your ${MARIOBUDDY()} is going to evolve 😮 !`,
   ...handleEvolution(),
   () => drawEyeGuy(),
   `Oh! It's an ${EYEGUY()} !`,
   `He's like a... a floating eye! ${NOT_OMINOUS}`,
   'Well, actually... I have to be totally honest with you...',
-  `I've heard that weird stuff can happen if your ${PICOBUDDY()} evolves into an ${EYEGUY()}... 😬`,
+  `I've heard that weird stuff can happen if your ${MARIOBUDDY()} evolves into an ${EYEGUY()}... 😬`,
   "But like... don't sweat it!",
   '😓 ➡️ 😎',
   "You'll be totally fine!",
@@ -390,7 +390,7 @@ const day8Events = [
   () => setCursor(true),
   'OK, sorry about yesterday 🤕.',
   'We totally fixed the cursor problem 🖱️, so you should be able to see your cursor again today.',
-  `Oh, one more thing: it looks like your ${PICOBUDDY()} might evolve again soon!`,
+  `Oh, one more thing: it looks like your ${MARIOBUDDY()} might evolve again soon!`,
   'Just keep up the good work and it might evolve into something cute 😘 !',
   'Anyway, since the cursor problem is figured out, today should be a bit easier 😁 !',
   () => makeManyCursors(),
@@ -419,7 +419,7 @@ const day9Events = [
       toggleClass('invisible', label);
     });
   },
-  `Hmm, it looks like the labeling systems for your ${PICOBUDDY()} device's buttons suddenly stopped working.`,
+  `Hmm, it looks like the labeling systems for your ${MARIOBUDDY()} device's buttons suddenly stopped working.`,
   'Sorry... Good luck with today!',
   ...runStandardDay(8, 1000),
 ];
@@ -462,7 +462,7 @@ const day11Events = [
       clean: 'clean',
     }),
   'Hey again 👋 !',
-  `Your ${PICOBUDDY()} is really causing some problems with the device's buttons ${BUTTON_EMOJI}!`,
+  `Your ${MARIOBUDDY()} is really causing some problems with the device's buttons ${BUTTON_EMOJI}!`,
   "They're still a little jumbled... But the problem is allllmoooooossssst fixed!",
   "Alright, let's have an awesome day 🌈 !",
   CHECK_LIST,
@@ -476,7 +476,7 @@ const day12Events = [
     'All the problems with the buttons are finally resolved, I think 🙌 !'
   ),
   garbleText(
-    `Also, I think your ${PICOBUDDY()} will evolve one last time 🥳 !!!`
+    `Also, I think your ${MARIOBUDDY()} will evolve one last time 🥳 !!!`
   ),
   garbleText(`This is its ${FINAL_FORM} !!`),
   garbleText(
@@ -488,7 +488,7 @@ const day12Events = [
 
 const day13Events = [
   'OK, this is the 13th day!!!',
-  `Your ${PICOBUDDY()} is going to evolve into its ${FINAL_FORM} !`,
+  `Your ${MARIOBUDDY()} is going to evolve into its ${FINAL_FORM} !`,
   ...handleEvolution(),
   () => drawFinalForm(),
   'Wow!!!',
@@ -496,7 +496,7 @@ const day13Events = [
   `This is the harbinger of ${UNBECOMING} !`,
   'I think this is ⭐️literally⭐️ the last day!',
   'Everything we worked for leads up to this!',
-  `So let's have fun with our ${PICOBUDDY()} one last time 😄 !`,
+  `So let's have fun with our ${MARIOBUDDY()} one last time 😄 !`,
   CHECK_LIST,
   ...runStandardDay(3, 0),
   () => delay(3000),
@@ -512,9 +512,9 @@ const day14Events = [
   () => setButtons(eventTypeVerbs, null, true),
   () => removeAllCursors(),
   'Wow!! You made it all the way to the end 🥳 !',
-  `Thank you so much for spending so much time with your ${PICOBUDDY()} 🤩 !!!`,
+  `Thank you so much for spending so much time with your ${MARIOBUDDY()} 🤩 !!!`,
   'I hope you had fun 🦄 !',
-  `Well, anyway, I guess your ${PICOBUDDY()} no longer requires your servitude!`,
+  `Well, anyway, I guess your ${MARIOBUDDY()} no longer requires your servitude!`,
   `It's all grown-up and totally ready to help bring about ${UNBECOMING} !!`,
   "So, let's calculate 🧮 how well you did!",
   /* Last day conclusion has to be handled a bit differently, due to stale closure. Probably could be improved upon, but whatever! */
@@ -688,7 +688,7 @@ function playAskSound(character) {
 
 /**
  * Adds an li to go in the "list of demands". The first list item also removes the text "None"
- * @param {string} eventType - coming from askForSomething, based on the picobuddy's demands. Morphed into a 'verb' here
+ * @param {string} eventType - coming from askForSomething, based on the MARIOBUDDY's demands. Morphed into a 'verb' here
  */
 function createEventLi(eventType, timeAllotted) {
   if (activeEventsHolder.textContent.includes('None')) {
@@ -841,7 +841,7 @@ let lastEvent = '';
 
 /**
  *
- * @param {Array<string>} customEventTypes - array of events that must match the event listener of the picobuddy device buttons
+ * @param {Array<string>} customEventTypes - array of events that must match the event listener of the MARIOBUDDY device buttons
  * @returns
  */
 function getRandomEvent(customEventTypes) {
@@ -946,7 +946,7 @@ function doHappinessMath() {
 
 function determineHappinessConclusion(finalPercent) {
   const intro = [
-    `In the end, your ${PICOBUDDY()} had a happiness level of ${finalPercent}% !`,
+    `In the end, your ${MARIOBUDDY()} had a happiness level of ${finalPercent}% !`,
     'That means... 🤔🤨🧐',
   ];
 
@@ -968,10 +968,10 @@ function determineHappinessConclusion(finalPercent) {
       ...intro,
       'You got ending 3 out of 3 (the "good" ending) 🥳 !!!',
       `Basically, ${TREATED} with just the right amount of attention 🧸🧸🧸 !`,
-      `Your ${PICOBUDDY()} appreciated your measured ambivalence !`,
-      `You may continue to serve your ${PICOBUDDY()} throughout and beyond ${UNBECOMING} !`,
+      `Your ${MARIOBUDDY()} appreciated your measured ambivalence !`,
+      `You may continue to serve your ${MARIOBUDDY()} throughout and beyond ${UNBECOMING} !`,
       'Holy cow 🐄 ! Congrats on getting the best ending!',
-      `Since you'll continue to take care of your ${PICOBUDDY()}, that means we can keep hanging out, too!`,
+      `Since you'll continue to take care of your ${MARIOBUDDY()}, that means we can keep hanging out, too!`,
     ];
   } else {
     /* so-so ending */
