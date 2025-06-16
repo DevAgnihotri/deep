@@ -1219,7 +1219,7 @@ function toggleClass(className, element) {
     : element.classList.add(className);
 }
 
-let // ZzFXMicro - Zuper Zmall Zound Zynth - v1.3.1 by Frank Force ~ 1000 bytes
+let // ZzFXMicro - Zuper Zmall Zound Zynth - v1.3.1 (adapted for MindHaven by DevAgnihotri) ~ 1000 bytes
   zzfxV = 0.3, // volume
   zzfxX = new AudioContext(), // audio context
   zzfx = // play sound
