@@ -2,47 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Cute Pico</title>
+    <title>MarioBuddy</title>
     <link
       rel="stylesheet"
       href="style.css"
     />
-    <style>
-      .go-back-button-fixed {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-        text-decoration: none;
-        color: #fff !important;
-        background: #d32f2f;
-        padding: 10px 16px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: bold;
-        border: 2px solid #b71c1c;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        transition: all 0.2s ease;
-      }
-      .go-back-button-fixed:hover {
-        background: #b71c1c;
-        cursor: pointer;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      }
-      .go-back-button-fixed:active {
-        background: #a50000;
-        transform: translateY(0px);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      }
-    </style>
   </head>
   <body class="c">
-    <!-- Go Back Button - Fixed Position -->
-    <a href="/#recommendations" class="go-back-button-fixed">← Go Back</a>
     <div id="modal">
       <div>
-        <h1>Cute Pico</h1>
+        <h1>MarioBuddy</h1>
         <button
           id="mb"
           class="loud-button"
@@ -80,7 +49,7 @@
           Day 1
         </button>
         <div id="hm">
-          <div id="hmm">🙂</div>
+          <div id="hmm">🍄</div>
         </div>
       </section>
 
@@ -89,21 +58,6 @@
         <div id="t"></div>
       </section>
     </main>
-    
-    <!-- Return to Mindhaven Button -->
-    <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
-      <button onclick="window.close(); window.location.href = '/#recommendations';" 
-              style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                     color: white; border: none; padding: 8px 16px; 
-                     border-radius: 20px; font-size: 12px; cursor: pointer; 
-                     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-                     transition: transform 0.2s;"
-              onmouseover="this.style.transform='scale(1.05)'"
-              onmouseout="this.style.transform='scale(1)'">
-        ← Back to Mindhaven
-      </button>
-    </div>
-    
     <script src="script.js"></script>
   </body>
 </html>
