@@ -74,11 +74,10 @@ const Index = () => {
                 <h2 className="text-4xl font-bold mb-4">Why Choose Mindhaven?</h2>
                 <p className="text-xl text-blue-100">Your trusted partner in mental wellness</p>
               </div>
-              
-              <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-8">
                 {/* Expert Therapists */}
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-transform duration-300 hover:scale-110">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Mindhaven Expert Therapists</h3>
@@ -89,7 +88,7 @@ const Index = () => {
 
                 {/* Personalized Content */}
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-transform duration-300 hover:scale-110">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Personalized Content</h3>
@@ -100,7 +99,7 @@ const Index = () => {
 
                 {/* Safe & Secure */}
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-transform duration-300 hover:scale-110">
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Safe & Secure</h3>

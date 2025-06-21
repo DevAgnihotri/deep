@@ -76,8 +76,7 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
             >
               Learn More
             </Button>
-            
-            <Button
+              <Button
               onClick={handleCommunitiesClick}
               variant="outline"
               size="lg"
@@ -86,32 +85,6 @@ export const Hero = ({ onStartJourney }: HeroProps) => {
               <MessageSquare className="w-5 h-5 mr-2" />
               Communities
             </Button>          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="flex flex-col items-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mb-4">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Mindhaven Expert Therapists</h3>
-            <p className="text-gray-600 text-center">Connect with licensed mental health professionals through our platform</p>
-          </div>
-          
-          <div className="flex flex-col items-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4">
-              <Sparkles className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Content</h3>
-            <p className="text-gray-600 text-center">Mindhaven curates resources based on your unique needs</p>
-          </div>
-          
-          <div className="flex flex-col items-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mb-4">
-              <Shield className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Safe & Secure</h3>
-            <p className="text-gray-600 text-center">Mindhaven prioritizes your privacy and data security</p>
-          </div>
         </div>
       </div>
       

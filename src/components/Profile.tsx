@@ -9,8 +9,6 @@ import { AlertTriangle, UserCheck, Heart, Edit, Save, X, Plus, Check, AlertCircl
 import { useAuth } from "@/contexts/AuthContext";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { WellnessMetrics } from "@/components/WellnessMetrics";
-import { MentalHealthScore } from "@/components/MentalHealthScore";
 import { HealthMetrics } from "./HealthMetrics";
 
 
@@ -358,9 +356,6 @@ export const Profile = () => {
               </div>
             </CardContent>
           </Card>
-
-          {/* Mental Health Score */}
-          <MentalHealthScore />
 
           {/* Health Metrics */}
           <HealthMetrics />
