@@ -366,69 +366,7 @@ export const WellnessDashboard: React.FC<WellnessDashboardProps> = ({ onNavigate
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column - Charts and Analytics */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Mental Health Trend Chart */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <LineChart className="w-5 h-5 mr-2 text-blue-600" />
-                Mental Health Trends
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {userData.dailyCheckins && userData.dailyCheckins.length > 0 ? (
-                <div className="space-y-4">
-                  <div className="h-40 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 flex items-center justify-center">
-                    <div className="text-center">
-                      <BarChart3 className="w-12 h-12 text-blue-500 mx-auto mb-2" />
-                      <p className="text-sm text-gray-600">
-                        {userData.dailyCheckins.length} check-ins recorded
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Last 30 days tracking available
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* Mini trend summary */}
-                  <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-blue-600">
-                        {Math.round(userData.dailyCheckins.reduce((sum, c) => sum + c.energy, 0) / userData.dailyCheckins.length)}
-                      </p>
-                      <p className="text-xs text-gray-600">Avg Energy</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-green-600">
-                        {Math.round(userData.dailyCheckins.reduce((sum, c) => sum + (10 - c.stress), 0) / userData.dailyCheckins.length)}
-                      </p>
-                      <p className="text-xs text-gray-600">Calm Level</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-purple-600">{userData.dailyCheckins.length}</p>
-                      <p className="text-xs text-gray-600">Total Days</p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="h-40 bg-gray-50 rounded-lg p-4 flex items-center justify-center">
-                  <div className="text-center">
-                    <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">No check-in data yet</p>
-                    <Button 
-                      size="sm" 
-                      onClick={() => setShowQuickCheckin(true)}
-                      className="mt-2"
-                    >
-                      Start Tracking
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
+        {/* Left Column - Charts and Analytics */}        <div className="lg:col-span-2 space-y-6">
           {/* Activity Overview */}
           <Card className="shadow-lg">
             <CardHeader>
@@ -559,45 +497,7 @@ export const WellnessDashboard: React.FC<WellnessDashboardProps> = ({ onNavigate
               >
                 <Users className="w-4 h-4 mr-2" />
                 Book Therapist
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Progress Goals */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Award className="w-5 h-5 mr-2 text-yellow-600" />
-                Progress Goals
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Weekly Check-ins</span>
-                  <span className="text-sm text-gray-600">{Math.min(streakDays, 7)}/7</span>
-                </div>
-                <Progress value={(Math.min(streakDays, 7) / 7) * 100} />
-              </div>
-              
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Course Progress</span>
-                  <span className="text-sm text-gray-600">
-                    {userData.courseProgress?.reduce((sum, c) => sum + c.progress, 0) || 0}%
-                  </span>
-                </div>
-                <Progress value={userData.courseProgress?.reduce((sum, c) => sum + c.progress, 0) || 0} />
-              </div>
-              
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Wellness Score</span>
-                  <span className="text-sm text-gray-600">{wellnessScore}/100</span>
-                </div>
-                <Progress value={wellnessScore} />
-              </div>
-            </CardContent>
+              </Button>            </CardContent>
           </Card>
         </div>
       </div>
