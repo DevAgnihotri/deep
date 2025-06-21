@@ -41,9 +41,8 @@ export const trackCourseProgress = (courseId: string, courseName: string, progre
     totalModules,
     lastAccessed: new Date().toISOString()
   };
-
   const existing = localStorage.getItem('courseProgress');
-  let courses: CourseProgressData[] = existing ? JSON.parse(existing) : [];
+  const courses: CourseProgressData[] = existing ? JSON.parse(existing) : [];
   
   const existingIndex = courses.findIndex(c => c.courseId === courseId);
   if (existingIndex >= 0) {
