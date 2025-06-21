@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Headphones, BookOpen, Youtube, Clock, Star, ChevronDown, ChevronUp, Gamepad2, Heart, Brain, Sparkles, Trophy, Users, Zap } from "lucide-react";
+import { Play, Headphones, BookOpen, Youtube, Clock, Star, ChevronDown, ChevronUp, Gamepad2, Heart, Brain, Sparkles, Trophy, Users, Zap, Moon, Volume2 } from "lucide-react";
 
 interface ContentRecommendationsProps {
   insights?: {
@@ -18,6 +18,7 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
   const [expandedVideos, setExpandedVideos] = useState<number | null>(null);
   const [expandedLectures, setExpandedLectures] = useState<number | null>(null);
   const [expandedGames, setExpandedGames] = useState<number | null>(null);
+  const [expandedSleep, setExpandedSleep] = useState<number | null>(null);
 
   const podcasts = [
     {
@@ -96,7 +97,6 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
       embedUrl: "https://www.youtube.com/embed/2IJUD-e14FY?si=g0HhRIngI4NVerIQ"
     }
   ];
-
   const lectures = [
     {
       title: "The Science of Happiness",
@@ -121,6 +121,53 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
       duration: "38 min",
       topic: "Therapy Techniques",
       embedUrl: "https://www.youtube.com/embed/PrVRGFpC7mc?si=HlD7QPDRu9nFgG86"
+    }
+  ];
+
+  const sleepContent = [
+    {
+      title: "Sleep Stories Collection",
+      category: "Sleep Stories",
+      description: "Calming bedtime stories to help you drift off peacefully",
+      duration: "20-45 min",
+      tracks: 15,
+      mood: "Relaxing",
+      embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DWZd79rJ6a7lp?utm_source=generator",
+      icon: "📚",
+      gradient: "from-indigo-400 to-purple-600"
+    },
+    {
+      title: "Deep Sleep Meditations",
+      category: "Sleep Meditations", 
+      description: "Guided meditations designed for better sleep quality",
+      duration: "10-30 min",
+      tracks: 20,
+      mood: "Peaceful",
+      embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DX9RwfGbeGQwP?utm_source=generator",
+      icon: "🧘",
+      gradient: "from-purple-400 to-pink-600"
+    },
+    {
+      title: "Sleep Music & Lullabies",
+      category: "Music",
+      description: "Soft instrumental music and modern lullabies for sleep",
+      duration: "1-8 hours",
+      tracks: 30,
+      mood: "Soothing",
+      embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DWYcDQ1hSjOpY?utm_source=generator",
+      icon: "🎵",
+      gradient: "from-blue-400 to-teal-600"
+    },
+    {
+      title: "Nature Soundscapes",
+      category: "Soundscapes",
+      description: "Rain, ocean waves, forest sounds for natural sleep aid",
+      duration: "30 min - 10 hours",
+      tracks: 25,
+      mood: "Natural",
+      embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DX8ymr6UES7vc?utm_source=generator",
+      icon: "🌿",
+      gradient: "from-green-400 to-blue-600"
     }
   ];
 
@@ -484,6 +531,114 @@ export const ContentRecommendations = ({ insights }: ContentRecommendationsProps
                   )}
                 </div>
               ))}
+            </div>
+          </CardContent>        </Card>
+
+        {/* Sleep & Rest Section */}
+        <Card className="bg-white/80 backdrop-blur-sm lg:col-span-2">
+          <CardHeader>
+            <CardTitle className="flex items-center text-xl">
+              <Moon className="w-5 h-5 mr-2 text-indigo-600" />
+              Sleep & Relaxation Audio
+            </CardTitle>
+            <p className="text-sm text-gray-600 mt-2">
+              Curated audio content to help you unwind and achieve better sleep quality
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {sleepContent.map((content, index) => (
+                <div key={index} className="space-y-3">
+                  <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${content.gradient} rounded-xl flex items-center justify-center text-2xl shadow-lg`}>
+                      {content.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-medium text-gray-900 text-lg">{content.title}</h4>
+                      <p className="text-sm text-indigo-600 font-medium">{content.category}</p>
+                      <p className="text-xs text-gray-600 mt-1">{content.description}</p>
+                      <div className="flex items-center mt-2 space-x-3">
+                        <div className="flex items-center space-x-1">
+                          <Volume2 className="w-3 h-3 text-gray-400" />
+                          <span className="text-xs text-gray-500">{content.tracks} tracks</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Clock className="w-3 h-3 text-gray-400" />
+                          <span className="text-xs text-gray-500">{content.duration}</span>
+                        </div>
+                        <Badge variant="outline" className="text-xs bg-white/80">
+                          {content.mood}
+                        </Badge>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setExpandedSleep(expandedSleep === index ? null : index)}
+                    >
+                      {expandedSleep === index ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                  {expandedSleep === index && (
+                    <div className="w-full bg-white rounded-lg p-4 shadow-sm">
+                      <div className="flex items-center justify-between mb-3">
+                        <h5 className="font-medium text-gray-800">Listen on Spotify</h5>
+                        <Button
+                          size="sm"
+                          onClick={() => window.open(content.embedUrl.replace('/embed/', '/'), '_blank')}
+                          className={`bg-gradient-to-r ${content.gradient} text-white hover:shadow-lg transition-all duration-300`}
+                        >
+                          <Play className="w-3 h-3 mr-1" />
+                          Open in Spotify
+                        </Button>
+                      </div>
+                      <iframe 
+                        src={content.embedUrl}
+                        width="100%" 
+                        height="352" 
+                        frameBorder="0" 
+                        allowTransparency={true}
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        className="rounded-lg shadow-sm"
+                      ></iframe>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            {/* Sleep Tips Banner */}
+            <div className="mt-6 bg-gradient-to-r from-indigo-50 via-purple-50 to-blue-50 rounded-xl p-6 border border-indigo-100">
+              <div className="text-center">
+                <div className="flex justify-center items-center space-x-2 mb-3">
+                  <Moon className="w-5 h-5 text-indigo-500" />
+                  <h3 className="text-lg font-semibold text-gray-800">Better Sleep, Better Mental Health</h3>
+                  <Moon className="w-5 h-5 text-indigo-500" />
+                </div>
+                <p className="text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Quality sleep is essential for mental well-being. These carefully curated audio experiences can help reduce anxiety, 
+                  improve sleep quality, and support your overall mental health journey. Use headphones for the best experience. 🎧✨
+                </p>
+                <div className="flex justify-center items-center mt-4 space-x-6 text-xs text-gray-500">
+                  <div className="flex items-center space-x-1">
+                    <Heart className="w-3 h-3 text-red-400" />
+                    <span>Sleep Quality</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Brain className="w-3 h-3 text-purple-400" />
+                    <span>Stress Relief</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Sparkles className="w-3 h-3 text-blue-400" />
+                    <span>Mental Restoration</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

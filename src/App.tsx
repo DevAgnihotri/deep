@@ -5,7 +5,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { validateEnvironment, logEnvironmentStatus } from "@/lib/envConfig";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Landing from "./pages/Landing";
@@ -17,12 +16,6 @@ import Dashboard from "./pages/Dashboard";
 import { useAuth } from "@/contexts/AuthContext";
 
 const queryClient = new QueryClient();
-
-// Validate environment variables in development
-if (import.meta.env.DEV) {
-  logEnvironmentStatus();
-  validateEnvironment();
-}
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const { user, loading } = useAuth();

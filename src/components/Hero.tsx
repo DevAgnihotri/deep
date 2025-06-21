@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Sparkles, Shield, Users, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,17 +17,25 @@ document.head.appendChild(style);
 
 interface HeroProps {
   onStartJourney: () => void;
-  onNavigateToAssessment?: () => void;
 }
 
-export const Hero = ({ onStartJourney, onNavigateToAssessment }: HeroProps) => {
+export const Hero = ({ onStartJourney }: HeroProps) => {
   const navigate = useNavigate();
 
   const handleCommunitiesClick = () => {
     navigate("/communities");
   };
+
   const handleLearnMoreClick = () => {
     navigate("/dashboard");
+  };
+
+  const handleTalkAboutDayClick = () => {
+    // Navigate to assessment page using section-based navigation
+    const event = new CustomEvent('navigate-to-section', { 
+      detail: 'assessment' 
+    });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -51,8 +58,9 @@ export const Hero = ({ onStartJourney, onNavigateToAssessment }: HeroProps) => {
             Mindhaven provides personalized therapy, mindful content, and AI-powered support
             tailored to your unique mental health journey.
           </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">            <Button
-              onClick={onNavigateToAssessment || (() => navigate("/assessment"))}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Button
+              onClick={handleTalkAboutDayClick}
               size="lg"
               className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-full text-lg font-semibold"
             >
@@ -77,8 +85,9 @@ export const Hero = ({ onStartJourney, onNavigateToAssessment }: HeroProps) => {
             >
               <MessageSquare className="w-5 h-5 mr-2" />
               Communities
-            </Button>          </div>        </div>
-
+            </Button>          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="flex flex-col items-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mb-4">
@@ -109,7 +118,8 @@ export const Hero = ({ onStartJourney, onNavigateToAssessment }: HeroProps) => {
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '4s' }}></div>      </div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '4s' }}></div>
+      </div>
     </div>
   );
 };

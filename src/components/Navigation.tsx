@@ -28,7 +28,7 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
 
   const menuItems = [
     { id: "home", label: "Home", icon: Heart },
-    { id: "assessment", label: "Mental Health Assessments", icon: Brain },
+    { id: "assessment", label: "Mental Health Assessment", icon: Brain },
     { id: "courses", label: "Courses", icon: GraduationCap },
     { id: "booking", label: "Book Therapist", icon: Calendar },
     { id: "recommendations", label: "Resources", icon: BookOpen },

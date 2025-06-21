@@ -253,7 +253,8 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
     }
   };
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">      {/* Mental Health Assessments Header */}
+    <div className="max-w-7xl mx-auto p-6 space-y-8">
+      {/* Mental Health Assessments Header */}
       <div className="text-center space-y-4 mb-8">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
           Mental Health Assessments
@@ -261,7 +262,9 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Comprehensive AI-powered mental wellness evaluation and personalized insights
         </p>
-      </div>{/* Top Three Components - Vertical Stack */}
+      </div>
+
+      {/* Top Three Components - Vertical Stack */}
       <div className="space-y-8 mb-8">
         {/* Women's Mental Wellness Score */}
         <div>
@@ -323,8 +326,7 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
           <CardTitle className="flex items-center justify-center space-x-2">
             <Brain className="h-6 w-6 text-blue-600" />
             <span>Comprehensive Mental Health Assessments</span>
-          </CardTitle>
-          <CardDescription>
+          </CardTitle><CardDescription>
             AI-powered depression screening and lifestyle risk assessment with personalized recommendations
           </CardDescription>
         </CardHeader>
@@ -360,8 +362,7 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
                   <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-full flex items-center justify-center shadow-xl">
                     <Brain className="w-10 h-10 text-white" />
                   </div>
-                </div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                </div>                <h2 className="text-4xl font-bold text-gray-900 mb-4">
                   AI-Powered Mental Health Assessments
                 </h2>
                 <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
@@ -925,7 +926,9 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
           <TabsContent value="history">
           <AssessmentHistory />
         </TabsContent>
-      </Tabs>      {/* Share Your Day Modal */}
+      </Tabs>
+
+      {/* Share Your Day Modal */}
       {showShareYourDay && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">

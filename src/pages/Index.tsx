@@ -12,7 +12,6 @@ import MentalHealthAssessmentPage from "@/pages/MentalHealthAssessmentPage";
 const Index = () => {
   const [currentSection, setCurrentSection] = useState("home");
   const [userInsights, setUserInsights] = useState(null);
-
   // Listen for chatbot navigation events
   useEffect(() => {
     const handleChatbotNavigation = (event: CustomEvent) => {
@@ -20,10 +19,17 @@ const Index = () => {
       setCurrentSection(target);
     };
 
+    const handleSectionNavigation = (event: CustomEvent) => {
+      const target = event.detail;
+      setCurrentSection(target);
+    };
+
     window.addEventListener('chatbot-navigate', handleChatbotNavigation as EventListener);
+    window.addEventListener('navigate-to-section', handleSectionNavigation as EventListener);
     
     return () => {
       window.removeEventListener('chatbot-navigate', handleChatbotNavigation as EventListener);
+      window.removeEventListener('navigate-to-section', handleSectionNavigation as EventListener);
     };
   }, []);
 
@@ -38,11 +44,9 @@ const Index = () => {
       case "recommendations":
         return <ContentRecommendations insights={userInsights} />;
       case "profile":
-        return <Profile />;      default:
-        return <Hero 
-          onStartJourney={() => {}} 
-          onNavigateToAssessment={() => setCurrentSection("assessment")}
-        />;
+        return <Profile />;
+      default:
+        return <Hero onStartJourney={() => {}} />;
     }
   };
 
