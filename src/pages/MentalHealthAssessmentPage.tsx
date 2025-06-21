@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, TrendingDown, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft, MessageCircle, Sun, BarChart3, PieChart, LineChart, Calendar, Clock, Target } from 'lucide-react';
+import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft, MessageCircle, Sun, BarChart3, PieChart, LineChart, Calendar, Clock, Target } from 'lucide-react';
 import DepressionQuiz, { DepressionQuizResult } from '@/components/DepressionQuizAdvanced';
 import PersonalityQuizEnhanced, { PersonalityQuizResult } from '@/components/PersonalityQuizEnhanced';
 import AssessmentHistory from '@/components/AssessmentHistory';
@@ -42,34 +42,8 @@ interface CombinedResults {
 }
 
 const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [showShareYourDay, setShowShareYourDay] = useState(false);
+  const [activeTab, setActiveTab] = useState('overview');  const [showShareYourDay, setShowShareYourDay] = useState(false);
   const [shareYourDayCompleted, setShareYourDayCompleted] = useState(false);
-  
-  // Load data from localStorage on initialization
-  const [depressionResult, setDepressionResult] = useState<DepressionQuizResult | null>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('depressionResult');
-      return saved ? JSON.parse(saved) : null;
-    }
-    return null;
-  });
-  
-  const [personalityResult, setPersonalityResult] = useState<PersonalityQuizResult | null>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('personalityResult');
-      return saved ? JSON.parse(saved) : null;
-    }
-    return null;
-  });
-  
-  const [combinedResults, setCombinedResults] = useState<CombinedResults | null>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('combinedResults');
-      return saved ? JSON.parse(saved) : null;
-    }
-    return null;
-  });
   
   // Enhanced user data tracking
   const [userDashboardData, setUserDashboardData] = useState({
@@ -156,12 +130,38 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
   };
   
   const analyzeRiskFactorChanges = (records) => {
-    if (records.length < 2) return [];    const recent = records.slice(-2);
+    if (records.length < 2) return [];
+    const recent = records.slice(-2);
     return [
       { factor: 'Depression Score', change: (recent[1]?.keyMetrics?.phq9Score || 0) - (recent[0]?.keyMetrics?.phq9Score || 0) },
       { factor: 'Risk Factors', change: (recent[1]?.keyMetrics?.riskFactorsCount || 0) - (recent[0]?.keyMetrics?.riskFactorsCount || 0) }
     ];
   };
+  
+  // Load data from localStorage on initialization
+  const [depressionResult, setDepressionResult] = useState<DepressionQuizResult | null>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('depressionResult');
+      return saved ? JSON.parse(saved) : null;
+    }
+    return null;
+  });
+  
+  const [personalityResult, setPersonalityResult] = useState<PersonalityQuizResult | null>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('personalityResult');
+      return saved ? JSON.parse(saved) : null;
+    }
+    return null;
+  });
+  
+  const [combinedResults, setCombinedResults] = useState<CombinedResults | null>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('combinedResults');
+      return saved ? JSON.parse(saved) : null;
+    }
+    return null;
+  });
 
   // Helper function to check if we have any results data
   const hasAnyResults = useCallback(() => {
