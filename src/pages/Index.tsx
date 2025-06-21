@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Hero } from "@/components/Hero";
+import { WellnessDashboard } from "@/components/WellnessDashboard";
 import { TherapistBooking } from "@/components/TherapistBooking";
 import { ContentRecommendations } from "@/components/ContentRecommendations";
 import { ChatBot } from "@/components/ChatBot";
@@ -12,6 +13,7 @@ import MentalHealthAssessmentPage from "@/pages/MentalHealthAssessmentPage";
 const Index = () => {
   const [currentSection, setCurrentSection] = useState("home");
   const [userInsights, setUserInsights] = useState(null);
+  
   // Listen for chatbot navigation events
   useEffect(() => {
     const handleChatbotNavigation = (event: CustomEvent) => {
@@ -45,8 +47,16 @@ const Index = () => {
         return <ContentRecommendations insights={userInsights} />;
       case "profile":
         return <Profile />;
-      default:
-        return <Hero onStartJourney={() => {}} />;
+      case "dashboard":
+        return <WellnessDashboard onNavigate={setCurrentSection} />;
+      default:        return (
+          <div className="space-y-0">
+            <Hero
+              onStartJourney={() => setCurrentSection("assessment")}
+            />
+            <WellnessDashboard onNavigate={setCurrentSection} />
+          </div>
+        );
     }
   };
 
