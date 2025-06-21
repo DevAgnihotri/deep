@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft, MessageCircle, Sun } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, TrendingDown, Heart, Sparkles, Activity, Shield, Zap, ArrowLeft, MessageCircle, Sun, BarChart3, PieChart, LineChart, Calendar, Clock, Target } from 'lucide-react';
 import DepressionQuiz, { DepressionQuizResult } from '@/components/DepressionQuizAdvanced';
 import PersonalityQuizEnhanced, { PersonalityQuizResult } from '@/components/PersonalityQuizEnhanced';
 import AssessmentHistory from '@/components/AssessmentHistory';
@@ -69,6 +70,98 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
     }
     return null;
   });
+  
+  // Enhanced user data tracking
+  const [userDashboardData, setUserDashboardData] = useState({
+    totalAssessments: 0,
+    lastAssessmentDate: null,
+    improvementTrend: 'stable',
+    consistencyScore: 0,
+    weeklyProgress: [],
+    riskFactorChanges: [],
+    wellnessScore: 0
+  });
+  
+  // Load dashboard analytics
+  useEffect(() => {
+    const loadDashboardData = () => {
+      const assessmentHistory = JSON.parse(localStorage.getItem('mental_health_assessment_history') || '{"records": []}');
+      const dailyCheckins = JSON.parse(localStorage.getItem('dailyCheckins') || '[]');
+      
+      const totalAssessments = assessmentHistory.records.length;
+      const lastRecord = assessmentHistory.records[assessmentHistory.records.length - 1];
+      
+      // Calculate wellness score based on recent data
+      let wellnessScore = 70;
+      if (depressionResult) {
+        wellnessScore -= (depressionResult.phq9Score / 27) * 30;
+      }
+      if (personalityResult) {
+        wellnessScore -= (personalityResult.riskScore / 30) * 20;
+      }
+      if (dailyCheckins.length > 0) {
+        const recentCheckins = dailyCheckins.slice(-7);
+        const avgEnergy = recentCheckins.reduce((sum, c) => sum + c.energy, 0) / recentCheckins.length;
+        wellnessScore += (avgEnergy - 5) * 3;
+      }
+      
+      setUserDashboardData({
+        totalAssessments,
+        lastAssessmentDate: lastRecord?.timestamp,
+        improvementTrend: calculateTrend(assessmentHistory.records),
+        consistencyScore: calculateConsistency(dailyCheckins),
+        weeklyProgress: generateWeeklyProgress(dailyCheckins),
+        riskFactorChanges: analyzeRiskFactorChanges(assessmentHistory.records),
+        wellnessScore: Math.max(0, Math.min(100, Math.round(wellnessScore)))
+      });
+    };
+    
+    loadDashboardData();
+  }, [depressionResult, personalityResult]);
+  
+  const calculateTrend = (records) => {
+    if (records.length < 2) return 'stable';
+    const recent = records.slice(-2);
+    const oldScore = recent[0]?.keyMetrics?.phq9Score || 0;
+    const newScore = recent[1]?.keyMetrics?.phq9Score || 0;
+    return newScore < oldScore ? 'improving' : newScore > oldScore ? 'declining' : 'stable';
+  };
+  
+  const calculateConsistency = (checkins) => {
+    if (checkins.length === 0) return 0;
+    const last7Days = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      last7Days.push(checkins.some(c => c.date === dateStr) ? 1 : 0);
+    }
+    return (last7Days.reduce((sum, val) => sum + val, 0) / 7) * 100;
+  };
+  
+  const generateWeeklyProgress = (checkins) => {
+    const weeklyData = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      const dayCheckin = checkins.find(c => c.date === dateStr);
+      weeklyData.push({
+        date: dateStr,
+        mood: dayCheckin?.energy || 0,
+        completed: !!dayCheckin
+      });
+    }
+    return weeklyData;
+  };
+  
+  const analyzeRiskFactorChanges = (records) => {
+    if (records.length < 2) return [];    const recent = records.slice(-2);
+    return [
+      { factor: 'Depression Score', change: (recent[1]?.keyMetrics?.phq9Score || 0) - (recent[0]?.keyMetrics?.phq9Score || 0) },
+      { factor: 'Risk Factors', change: (recent[1]?.keyMetrics?.riskFactorsCount || 0) - (recent[0]?.keyMetrics?.riskFactorsCount || 0) }
+    ];
+  };
 
   // Helper function to check if we have any results data
   const hasAnyResults = useCallback(() => {
@@ -312,12 +405,230 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Mindhaven Wellness Metrics Grid */}
+        </div>        {/* Mindhaven Wellness Metrics Grid */}
         <div>
           <WellnessMetrics />
         </div>
+      </div>
+
+      {/* Enhanced Data Analytics Dashboard */}
+      <div className="space-y-8 mb-8">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            Your Mental Health Analytics
+          </h2>
+          <p className="text-gray-600">Real-time insights from your assessment and check-in data</p>
+        </div>
+
+        {/* Analytics Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Wellness Score Card */}
+          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-sm font-medium text-blue-700">Overall Wellness</p>
+                  <div className="flex items-center space-x-2 mt-2">
+                    <span className="text-3xl font-bold text-blue-900">{userDashboardData.wellnessScore}</span>
+                    <span className="text-lg text-blue-600">/100</span>
+                    {userDashboardData.improvementTrend === 'improving' && (
+                      <TrendingUp className="w-5 h-5 text-green-500" />
+                    )}
+                  </div>
+                </div>
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <Progress value={userDashboardData.wellnessScore} className="mt-2" />
+              <p className="text-xs text-blue-600 mt-2">
+                {userDashboardData.improvementTrend === 'improving' ? '📈 Trending up' : 
+                 userDashboardData.improvementTrend === 'declining' ? '📉 Needs attention' : '📊 Stable'}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Total Assessments Card */}
+          <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-sm font-medium text-green-700">Assessments Taken</p>
+                  <div className="flex items-center space-x-2 mt-2">
+                    <span className="text-3xl font-bold text-green-900">{userDashboardData.totalAssessments}</span>
+                    <span className="text-lg text-green-600">total</span>
+                  </div>
+                </div>
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              {userDashboardData.lastAssessmentDate && (
+                <p className="text-xs text-green-600 mt-2">
+                  Last: {new Date(userDashboardData.lastAssessmentDate).toLocaleDateString()}
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Consistency Score Card */}
+          <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-sm font-medium text-purple-700">Weekly Consistency</p>
+                  <div className="flex items-center space-x-2 mt-2">
+                    <span className="text-3xl font-bold text-purple-900">{Math.round(userDashboardData.consistencyScore)}</span>
+                    <span className="text-lg text-purple-600">%</span>
+                  </div>
+                </div>
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <Progress value={userDashboardData.consistencyScore} className="mt-2" />
+              <p className="text-xs text-purple-600 mt-2">
+                {userDashboardData.consistencyScore >= 70 ? '🔥 Great streak!' : 
+                 userDashboardData.consistencyScore >= 40 ? '👍 Good progress' : '💪 Keep going!'}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Quick Action Card */}
+          <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 shadow-lg">
+            <CardContent className="p-6">
+              <div className="text-center">
+                <Target className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                <p className="text-sm font-medium text-orange-700 mb-3">Next Steps</p>
+                {!hasAnyResults() ? (
+                  <Button 
+                    size="sm"
+                    onClick={() => setActiveTab('depression')}
+                    className="bg-orange-500 hover:bg-orange-600 text-white w-full"
+                  >
+                    Start Assessment
+                  </Button>
+                ) : (
+                  <Button 
+                    size="sm"
+                    onClick={() => setActiveTab('results')}
+                    variant="outline"
+                    className="border-orange-300 text-orange-700 hover:bg-orange-50 w-full"
+                  >
+                    View Results
+                  </Button>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Weekly Progress Visualization */}
+        {userDashboardData.weeklyProgress.length > 0 && (
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <LineChart className="w-5 h-5 mr-2 text-blue-600" />
+                Weekly Progress Tracking
+              </CardTitle>
+              <CardDescription>Your daily check-in consistency over the past week</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="grid grid-cols-7 gap-2">
+                  {userDashboardData.weeklyProgress.map((day, index) => {
+                    const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date(day.date).getDay()];
+                    return (
+                      <div key={index} className="text-center">
+                        <div className={`w-full h-12 rounded-lg flex items-center justify-center mb-2 ${
+                          day.completed 
+                            ? 'bg-green-500 text-white' 
+                            : 'bg-gray-200 text-gray-500'
+                        }`}>
+                          {day.completed ? (
+                            <CheckCircle2 className="w-6 h-6" />
+                          ) : (
+                            <Clock className="w-6 h-6" />
+                          )}
+                        </div>
+                        <p className="text-xs font-medium text-gray-600">{dayName}</p>
+                        {day.completed && (
+                          <p className="text-xs text-green-600">Energy: {day.mood}/10</p>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                {/* Progress Summary */}
+                <div className="grid grid-cols-3 gap-4 pt-4 border-t">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-blue-600">
+                      {userDashboardData.weeklyProgress.filter(d => d.completed).length}
+                    </p>
+                    <p className="text-xs text-gray-600">Days Tracked</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-green-600">
+                      {userDashboardData.weeklyProgress.length > 0 
+                        ? Math.round(userDashboardData.weeklyProgress.filter(d => d.completed)
+                            .reduce((sum, d) => sum + d.mood, 0) / 
+                          Math.max(1, userDashboardData.weeklyProgress.filter(d => d.completed).length))
+                        : 0}
+                    </p>
+                    <p className="text-xs text-gray-600">Avg Energy</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-purple-600">
+                      {Math.round(userDashboardData.consistencyScore)}%
+                    </p>
+                    <p className="text-xs text-gray-600">Consistency</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Risk Factor Changes */}
+        {userDashboardData.riskFactorChanges.length > 0 && (
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <PieChart className="w-5 h-5 mr-2 text-purple-600" />
+                Risk Factor Analysis
+              </CardTitle>
+              <CardDescription>Changes in your mental health indicators over time</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {userDashboardData.riskFactorChanges.map((factor, index) => (
+                  <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-gray-800">{factor.factor}</p>
+                      <p className="text-sm text-gray-600">Since last assessment</p>
+                    </div>
+                    <div className="flex items-center">
+                      {factor.change === 0 ? (
+                        <Badge variant="outline" className="text-gray-600">No Change</Badge>
+                      ) : factor.change < 0 ? (
+                        <Badge className="bg-green-100 text-green-800">
+                          <TrendingDown className="w-4 h-4 mr-1" />
+                          Improved ({Math.abs(factor.change)})
+                        </Badge>
+                      ) : (
+                        <Badge className="bg-orange-100 text-orange-800">
+                          <TrendingUp className="w-4 h-4 mr-1" />
+                          Increased (+{factor.change})
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
 
       {/* Main Assessment Content */}
