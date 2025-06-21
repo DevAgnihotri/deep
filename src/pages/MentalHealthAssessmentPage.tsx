@@ -8,6 +8,9 @@ import { Brain, User, CheckCircle2, AlertTriangle, TrendingUp, Heart, Sparkles, 
 import DepressionQuiz, { DepressionQuizResult } from '@/components/DepressionQuizAdvanced';
 import PersonalityQuizEnhanced, { PersonalityQuizResult } from '@/components/PersonalityQuizEnhanced';
 import AssessmentHistory from '@/components/AssessmentHistory';
+import { MentalHealthScore } from '@/components/MentalHealthScore';
+import { WellnessMetrics } from '@/components/WellnessMetrics';
+import { PersonalizationQuiz } from '@/components/PersonalizationQuiz';
 
 interface PersonalizationInsights {
   primaryConcern: string;
@@ -39,6 +42,8 @@ interface CombinedResults {
 
 const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [showShareYourDay, setShowShareYourDay] = useState(false);
+  const [shareYourDayCompleted, setShareYourDayCompleted] = useState(false);
   
   // Load data from localStorage on initialization
   const [depressionResult, setDepressionResult] = useState<DepressionQuizResult | null>(() => {
@@ -116,6 +121,12 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
     if (onNavigate) {
       onNavigate('booking');
     }
+  };
+
+  const handleShareYourDayComplete = (insights: PersonalizationInsights) => {
+    console.log("Share Your Day completed:", insights);
+    setShareYourDayCompleted(true);
+    setShowShareYourDay(false);
   };
 
   const updateCombinedResults = useCallback((depression: DepressionQuizResult | null, personality: PersonalityQuizResult | null) => {
@@ -241,15 +252,79 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
       default: return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
-
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-7xl mx-auto p-6 space-y-8">      {/* Mental Health Assessments Header */}
+      <div className="text-center space-y-4 mb-8">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          Mental Health Assessments
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Comprehensive AI-powered mental wellness evaluation and personalized insights
+        </p>
+      </div>{/* Top Three Components - Vertical Stack */}
+      <div className="space-y-8 mb-8">
+        {/* Women's Mental Wellness Score */}
+        <div>
+          <MentalHealthScore showTitle={true} />
+        </div>
+
+        {/* Share Your Day Box */}
+        <div>
+          <Card className="bg-gradient-to-r from-slate-50 via-blue-50 to-indigo-50 border-2 border-slate-200 shadow-lg">
+            <CardHeader className="text-center pb-4">
+              <CardTitle className="flex items-center justify-center gap-3 text-2xl">
+                <Sun className="w-8 h-8 text-orange-500" />
+                <span className="bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 bg-clip-text text-transparent font-bold">
+                  Share Your Day
+                </span>
+                {shareYourDayCompleted && <CheckCircle2 className="w-6 h-6 text-green-500" />}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="bg-white/90 backdrop-blur-lg rounded-xl p-4 border border-slate-100 shadow-sm">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <MessageCircle className="w-5 h-5 text-slate-600" />
+                  <span className="font-semibold text-gray-800">Wellness Check-in</span>
+                  <Heart className="w-5 h-5 text-rose-500" />
+                </div>
+                <p className="text-gray-600 text-sm text-center leading-relaxed mb-4">
+                  Share your thoughts and emotions for personalized mental health insights.
+                </p>
+                <div className="flex justify-center">
+                  {!shareYourDayCompleted ? (
+                    <Button 
+                      onClick={() => setShowShareYourDay(true)}
+                      className="bg-gradient-to-r from-slate-600 via-blue-600 to-indigo-600 hover:from-slate-700 hover:via-blue-700 hover:to-indigo-700 text-white px-6 py-2 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      <Sun className="w-4 h-4 mr-2" />
+                      Start Check-in
+                    </Button>
+                  ) : (
+                    <div className="flex items-center gap-2 text-green-700 font-semibold">
+                      <CheckCircle2 className="w-5 h-5" />
+                      <span>Completed Today</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Mindhaven Wellness Metrics Grid */}
+        <div>
+          <WellnessMetrics />
+        </div>
+      </div>
+
+      {/* Main Assessment Content */}
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="flex items-center justify-center space-x-2">
             <Brain className="h-6 w-6 text-blue-600" />
-            <span>Comprehensive Mental Health Assessment</span>
-          </CardTitle>          <CardDescription>
+            <span>Comprehensive Mental Health Assessments</span>
+          </CardTitle>
+          <CardDescription>
             AI-powered depression screening and lifestyle risk assessment with personalized recommendations
           </CardDescription>
         </CardHeader>
@@ -287,7 +362,7 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
                   </div>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                  AI-Powered Mental Health Assessment
+                  AI-Powered Mental Health Assessments
                 </h2>
                 <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
                   Experience cutting-edge mental health screening powered by advanced <strong>machine learning</strong> and 
@@ -847,11 +922,32 @@ const MentalHealthAssessmentPage: React.FC<MentalHealthAssessmentPageProps> = ({
               </div>
             );
           })()}        </TabsContent>
-        
-        <TabsContent value="history">
+          <TabsContent value="history">
           <AssessmentHistory />
         </TabsContent>
-      </Tabs>
+      </Tabs>      {/* Share Your Day Modal */}
+      {showShareYourDay && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-100 p-4 flex items-center justify-between rounded-t-2xl">
+              <h2 className="text-xl font-bold text-gray-800">Share Your Day - Wellness Check-in</h2>
+              <Button 
+                onClick={() => setShowShareYourDay(false)}
+                variant="ghost"
+                size="sm"
+                className="text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </Button>
+            </div>
+            <div className="p-6">
+              <PersonalizationQuiz 
+                onComplete={handleShareYourDayComplete}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

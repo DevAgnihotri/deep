@@ -8,7 +8,7 @@ const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/
 // These credentials would typically come from environment variables
 // For production, use .env files and ensure they're added to .gitignore
 const API_KEY = ''; // No API key needed for this OAuth implementation
-const CLIENT_ID = '592394375846-ftp9cnlamo37lm00r1nd6167j0ie0bo7.apps.googleusercontent.com';
+const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '592394375846-ftp9cnlamo37lm00r1nd6167j0ie0bo7.apps.googleusercontent.com';
 
 export interface GoogleCalendarEvent {
   summary: string;

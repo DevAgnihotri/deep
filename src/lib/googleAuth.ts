@@ -18,7 +18,7 @@ interface GoogleApiConfig {
 // For production, this should be loaded from environment variables or .env file
 export const GOOGLE_API_CONFIG: GoogleApiConfig = {
   apiKey: '', // No API key needed for this OAuth implementation
-  clientId: '592394375846-ftp9cnlamo37lm00r1nd6167j0ie0bo7.apps.googleusercontent.com',
+  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '592394375846-ftp9cnlamo37lm00r1nd6167j0ie0bo7.apps.googleusercontent.com',
   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
   scope: CALENDAR_SCOPES.join(' ')
 };

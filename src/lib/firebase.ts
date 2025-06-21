@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBUnmIiEIEGBapfymqOi1llnfHfou4JPIY",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyBUnmIiEIEGBapfymqOi1llnfHfou4JPIY",
   authDomain: "allina-f0012.firebaseapp.com",
   projectId: "allina-f0012",
   storageBucket: "allina-f0012.appspot.com", // FIXED: correct Firebase Storage bucket

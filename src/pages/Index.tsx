@@ -38,9 +38,11 @@ const Index = () => {
       case "recommendations":
         return <ContentRecommendations insights={userInsights} />;
       case "profile":
-        return <Profile />;
-      default:
-        return <Hero onStartJourney={() => {}} />;
+        return <Profile />;      default:
+        return <Hero 
+          onStartJourney={() => {}} 
+          onNavigateToAssessment={() => setCurrentSection("assessment")}
+        />;
     }
   };
 
