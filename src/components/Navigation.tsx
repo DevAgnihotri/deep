@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, Calendar, Gamepad2, MessageCircle, UserCheck, LogOut, GraduationCap, Brain } from "lucide-react";
 import { useState } from "react";
@@ -23,14 +22,6 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
       navigate("/");
     } catch (error) {
       console.error("Error signing out:", error);
-    }
-  };
-
-  const handleMenuItemClick = (itemId: string) => {
-    if (itemId === 'mindgames') {
-      navigate('/mindgames');
-    } else {
-      onSectionChange(itemId);
     }
   };
 
@@ -60,7 +51,13 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
             {menuItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleMenuItemClick(item.id)}
+                onClick={() => {
+                  if (item.id === "mindgames") {
+                    navigate("/mindgames");
+                  } else {
+                    onSectionChange(item.id);
+                  }
+                }}
                 className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
                   currentSection === item.id
                     ? "bg-green-100 text-green-700"
@@ -132,8 +129,13 @@ export const Navigation = ({ currentSection, onSectionChange }: NavigationProps)
               <button
                 key={item.id}
                 onClick={() => {
-                  handleMenuItemClick(item.id);
-                  setIsMenuOpen(false);
+                  if (item.id === "mindgames") {
+                    navigate("/mindgames");
+                    setIsMenuOpen(false);
+                  } else {
+                    onSectionChange(item.id);
+                    setIsMenuOpen(false);
+                  }
                 }}
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                   currentSection === item.id

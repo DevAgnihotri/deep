@@ -14,8 +14,8 @@ import Communities from "./pages/Communities";
 import { Courses } from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import WellnessActivities from "./pages/WellnessActivities";
-import ContentRecommendationsPage from "./pages/ContentRecommendationsPage";
 import { useAuth } from "@/contexts/AuthContext";
+import {ContentRecommendations} from "./components/ContentRecommendations";
 
 const queryClient = new QueryClient();
 
@@ -41,10 +41,10 @@ const App = () => (
               <Route path="/get-started" element={<GetStarted />} />
               <Route path="/communities" element={<Communities />} />
               <Route path="/mindgames" element={<WellnessActivities />} />
-              <Route path="/content-recommendations" element={<ContentRecommendationsPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} />
               <Route path="/home" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+              <Route path="/ContentRecommendations" element={<ContentRecommendations />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

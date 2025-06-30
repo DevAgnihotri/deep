@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flower, RotateCcw, Heart } from 'lucide-react';
-import { BackButton } from '../BackButton';
 
 interface Plant {
   id: string;
@@ -14,10 +13,9 @@ interface Plant {
 
 interface MeditationGardenGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
-export const MeditationGardenGame: React.FC<MeditationGardenGameProps> = ({ onComplete, onBack }) => {
+export const MeditationGardenGame: React.FC<MeditationGardenGameProps> = ({ onComplete }) => {
   const [plants, setPlants] = useState<Plant[]>([]);
   const [timeSpent, setTimeSpent] = useState(0);
   const [breathingPhase, setBreathingPhase] = useState<'inhale' | 'exhale'>('inhale');
@@ -123,9 +121,6 @@ export const MeditationGardenGame: React.FC<MeditationGardenGameProps> = ({ onCo
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Meditation Garden</h2>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Plus, Send, Sparkles } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
+import { Plus, Heart, RotateCcw } from 'lucide-react';
 
 interface GratitudeItem {
   id: string;
@@ -14,10 +12,9 @@ interface GratitudeItem {
 
 interface GratitudeTreeGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
-export const GratitudeTreeGame: React.FC<GratitudeTreeGameProps> = ({ onComplete, onBack }) => {
+export const GratitudeTreeGame: React.FC<GratitudeTreeGameProps> = ({ onComplete }) => {
   const [gratitudeItems, setGratitudeItems] = useState<GratitudeItem[]>([]);
   const [newItem, setNewItem] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -87,10 +84,7 @@ export const GratitudeTreeGame: React.FC<GratitudeTreeGameProps> = ({ onComplete
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 relative overflow-hidden">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Gratitude Tree</h2>

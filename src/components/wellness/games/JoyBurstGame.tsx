@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, RotateCcw, Star } from 'lucide-react';
-import { BackButton } from '../BackButton';
 
 interface Firework {
   id: string;
@@ -24,10 +23,9 @@ interface Particle {
 
 interface JoyBurstGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
-export const JoyBurstGame: React.FC<JoyBurstGameProps> = ({ onComplete, onBack }) => {
+export const JoyBurstGame: React.FC<JoyBurstGameProps> = ({ onComplete }) => {
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [score, setScore] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -118,9 +116,6 @@ export const JoyBurstGame: React.FC<JoyBurstGameProps> = ({ onComplete, onBack }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 relative overflow-hidden">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
       {/* Header */}
       <div className="absolute top-6 left-6 right-6 z-10">
         <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-white/20">

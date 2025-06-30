@@ -1,15 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Calendar, Target, Award, BarChart3, Activity, Clock, Star, ArrowLeft } from 'lucide-react';
+import { TrendingUp, Calendar, Target, Award, BarChart3, Activity, Clock, Star } from 'lucide-react';
 import { GameSession, UserProgress } from '../../types/wellness-advanced';
 
 interface ProgressDashboardProps {
   sessions: GameSession[];
   progress: UserProgress;
-  onBack?: () => void;
 }
 
-export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ sessions, progress, onBack }) => {
+export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ sessions, progress }) => {
   console.log('📊 Progress Dashboard - Sessions:', sessions.length, 'Progress:', progress);
 
   const recentSessions = sessions.slice(-7);
@@ -102,23 +101,10 @@ export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ sessions, 
 
   return (
     <div className="w-full max-w-7xl mx-auto p-3 sm:p-4 lg:p-6">
-      {/* Header with Back Button */}
-      <div className="flex items-center justify-between mb-6 sm:mb-8">
-        <div className="flex-1 text-center">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-indigo-900 mb-2">Your Wellness Progress</h2>
-          <p className="text-sm sm:text-base text-indigo-700">Track your stress relief journey and celebrate your achievements</p>
-        </div>
-        {onBack && (
-          <motion.button
-            onClick={onBack}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
-          </motion.button>
-        )}
+      {/* Header - Responsive text sizes */}
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-indigo-900 mb-2">Your Wellness Progress</h2>
+        <p className="text-sm sm:text-base text-indigo-700">Track your stress relief journey and celebrate your achievements</p>
       </div>
 
       {/* Quick Stats Overview - Responsive grid */}

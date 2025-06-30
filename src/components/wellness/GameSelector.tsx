@@ -10,22 +10,8 @@ interface GameSelectorProps {
 }
 
 export const GameSelector: React.FC<GameSelectorProps> = ({ selectedMood, onGameSelect }) => {
-  // Early return if selectedMood is not provided
-  if (!selectedMood || !selectedMood.id) {
-    return (
-      <div className="w-full max-w-6xl mx-auto p-6">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Error: No mood selected</h2>
-          <p className="text-gray-600">Please select a mood first to see recommended activities.</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Add comprehensive null checks and filter out invalid games
-  const validGames = games.filter(game => 
-    game && game.id && game.suitableForMoods && Array.isArray(game.suitableForMoods)
-  );
+  // Add null checks and filter out invalid games
+  const validGames = games.filter(game => game && game.id && game.suitableForMoods);
   
   const recommendedGames = validGames.filter(game => 
     game.suitableForMoods.includes(selectedMood.id)

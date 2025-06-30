@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, RotateCcw, Zap } from 'lucide-react';
-import { BackButton } from '../BackButton';
+import { Play, Pause, RotateCcw, Zap, ArrowLeft } from 'lucide-react';
 
 interface Ball {
   id: string;
@@ -16,7 +15,7 @@ interface Ball {
 
 interface EnergyBounceGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
+  onBack: () => void;
 }
 
 export const EnergyBounceGame: React.FC<EnergyBounceGameProps> = ({ onComplete, onBack }) => {
@@ -142,10 +141,17 @@ export const EnergyBounceGame: React.FC<EnergyBounceGameProps> = ({ onComplete, 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center mb-6">
+          <motion.button
+            onClick={onBack}
+            className="mr-4 p-2 text-gray-600 hover:text-gray-800 hover:bg-white hover:shadow-md rounded-full transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </motion.button>
           <div>
             <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Energy Bounce

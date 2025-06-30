@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RotateCcw, Zap, Play, Trophy, Flame } from 'lucide-react';
-import { BackButton } from '../BackButton';
 
 // Simple fallback for sound effects
 const useSoundEffects = () => ({
@@ -26,7 +25,6 @@ interface SmashObject {
 
 interface AngerSmashGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
 interface Particle {
@@ -39,7 +37,7 @@ interface Particle {
   life: number;
 }
 
-export const AngerSmashGame: React.FC<AngerSmashGameProps> = ({ onComplete, onBack }) => {
+export const AngerSmashGame: React.FC<AngerSmashGameProps> = ({ onComplete }) => {
   const [objects, setObjects] = useState<SmashObject[]>([]);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [score, setScore] = useState(0);
@@ -259,7 +257,6 @@ export const AngerSmashGame: React.FC<AngerSmashGameProps> = ({ onComplete, onBa
     }, 1000);
 
     return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameActive, gameStarted]);
 
   // Power mode timer
@@ -403,16 +400,13 @@ export const AngerSmashGame: React.FC<AngerSmashGameProps> = ({ onComplete, onBa
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 text-gray-800 relative overflow-hidden">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-
       {/* Power Mode Overlay */}
       {powerMode && (
         <div className="absolute inset-0 bg-amber-400/20 pointer-events-none z-10 animate-pulse" />
       )}
 
       {/* Enhanced HUD */}
-      <div className="absolute top-4 left-20 right-4 z-20">
+      <div className="absolute top-4 left-4 right-4 z-20">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center mb-3">
             <div>

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Users, RotateCcw, Send } from 'lucide-react';
+import { Heart, Users, RotateCcw, Send, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
 
 interface Hug {
   id: string;
@@ -14,8 +13,8 @@ interface Hug {
 
 interface VirtualHugGameProps {
   onComplete: (score: number) => void;
-  onExit?: () => void;
-  onBack?: () => void;
+  onExit: () => void;
+  onBack: () => void;
 }
 
 export const VirtualHugGame: React.FC<VirtualHugGameProps> = ({ onComplete, onExit, onBack }) => {
@@ -111,11 +110,18 @@ export const VirtualHugGame: React.FC<VirtualHugGameProps> = ({ onComplete, onEx
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-4 sm:p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
+            <Button
+              onClick={onBack}
+              variant="outline"
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </Button>
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Virtual Hugs</h2>
               <p className="text-gray-600 text-sm sm:text-base">Send and receive comforting virtual hugs</p>

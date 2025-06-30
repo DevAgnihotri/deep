@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, RefreshCw, Palette, RotateCcw } from 'lucide-react';
-import { BackButton } from '../BackButton';
+import { motion } from 'framer-motion';
+import { Palette, RotateCcw, Heart } from 'lucide-react';
 
 interface ColorTherapyGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
-export const ColorTherapyGame: React.FC<ColorTherapyGameProps> = ({ onComplete, onBack }) => {
+export const ColorTherapyGame: React.FC<ColorTherapyGameProps> = ({ onComplete }) => {
   const [selectedColor, setSelectedColor] = useState('#3B82F6');
   const [paintedAreas, setPaintedAreas] = useState<{ x: number; y: number; color: string; size: number }[]>([]);
   const [currentMood, setCurrentMood] = useState('calm');
@@ -67,10 +65,7 @@ export const ColorTherapyGame: React.FC<ColorTherapyGameProps> = ({ onComplete, 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Color Therapy</h2>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RotateCcw, Zap } from 'lucide-react';
-import { BackButton } from '../BackButton';
 
 interface StressBall {
   id: string;
@@ -15,10 +14,9 @@ interface StressBall {
 
 interface StressSqueezeGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
-export const StressSqueezeGame: React.FC<StressSqueezeGameProps> = ({ onComplete, onBack }) => {
+export const StressSqueezeGame: React.FC<StressSqueezeGameProps> = ({ onComplete }) => {
   const [stressBalls, setStressBalls] = useState<StressBall[]>([]);
   const [score, setScore] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -116,9 +114,6 @@ export const StressSqueezeGame: React.FC<StressSqueezeGameProps> = ({ onComplete
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 p-6">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Stress Squeeze</h2>

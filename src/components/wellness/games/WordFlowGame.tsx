@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Heart, RotateCcw, Sparkles } from 'lucide-react';
+import { Plus, Heart, RotateCcw, Sparkles, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
 
 interface WordConnection {
   id: string;
@@ -15,8 +14,8 @@ interface WordConnection {
 
 interface WordFlowGameProps {
   onComplete: (score: number) => void;
-  onExit?: () => void;
-  onBack?: () => void;
+  onExit: () => void;
+  onBack: () => void;
 }
 
 const wordColors = [
@@ -170,11 +169,18 @@ export const WordFlowGame: React.FC<WordFlowGameProps> = ({ onComplete, onExit, 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
+            <Button
+              onClick={onBack}
+              variant="outline"
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </Button>
             <div>
               <h2 className="text-3xl font-bold text-gray-800">Positive Word Flow</h2>
               <p className="text-gray-600">Connect positive words to shift your mindset and create meaning</p>

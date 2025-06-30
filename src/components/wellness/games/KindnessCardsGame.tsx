@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Send, RotateCcw, Plus, Sparkles } from 'lucide-react';
-import { BackButton } from '../BackButton';
 // import { useSoundEffects } from '../../../hooks/useSoundEffects';
 
 // Simple fallback for sound effects
@@ -13,7 +12,6 @@ const useSoundEffects = () => ({
 
 interface KindnessCardsGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
 interface KindnessCard {
@@ -25,7 +23,7 @@ interface KindnessCard {
   timestamp: Date;
 }
 
-export const KindnessCardsGame: React.FC<KindnessCardsGameProps> = ({ onComplete, onBack }) => {
+export const KindnessCardsGame: React.FC<KindnessCardsGameProps> = ({ onComplete }) => {
   const [cards, setCards] = useState<KindnessCard[]>([]);
   const [customMessage, setCustomMessage] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('encouragement');
@@ -132,7 +130,6 @@ export const KindnessCardsGame: React.FC<KindnessCardsGameProps> = ({ onComplete
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-teal-50 to-cyan-50 p-4 sm:p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Kindness Cards</h2>

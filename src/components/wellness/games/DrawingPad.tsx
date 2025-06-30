@@ -1,16 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { RotateCcw, Palette, Download } from 'lucide-react';
+import { ArrowLeft, RotateCcw, Palette, Download } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
 
 interface DrawingPadProps {
   onComplete: (score: number) => void;
-  onExit?: () => void;
-  onBack?: () => void;
+  onExit: () => void;
 }
 
-export const DrawingPad: React.FC<DrawingPadProps> = ({ onComplete, onExit, onBack }) => {
+export const DrawingPad: React.FC<DrawingPadProps> = ({ onComplete, onExit }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [currentColor, setCurrentColor] = useState('#10b981');
@@ -109,6 +107,14 @@ export const DrawingPad: React.FC<DrawingPadProps> = ({ onComplete, onExit, onBa
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
+            <Button 
+              onClick={onExit}
+              variant="outline" 
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </Button>
           </div>
 
           <div className="text-6xl mb-6">🎨</div>
@@ -141,9 +147,6 @@ export const DrawingPad: React.FC<DrawingPadProps> = ({ onComplete, onExit, onBa
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
       {/* Navigation */}
       <nav className="bg-white/90 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,6 +160,14 @@ export const DrawingPad: React.FC<DrawingPadProps> = ({ onComplete, onExit, onBa
               <div className="text-sm text-gray-600">
                 Time: {Math.floor(drawingTime / 60)}:{(drawingTime % 60).toString().padStart(2, '0')}
               </div>
+              <Button 
+                onClick={onExit}
+                variant="outline" 
+                className="flex items-center space-x-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Exit</span>
+              </Button>
             </div>
           </div>
         </div>

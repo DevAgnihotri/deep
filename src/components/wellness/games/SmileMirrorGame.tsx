@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Smile, RotateCcw, Heart, Camera } from 'lucide-react';
-import { BackButton } from '../BackButton';
 
 // Simple fallback for sound effects
 const useSoundEffects = () => ({
@@ -12,7 +11,6 @@ const useSoundEffects = () => ({
 
 interface SmileMirrorGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
 interface SmileChallenge {
@@ -23,7 +21,7 @@ interface SmileChallenge {
   completed: boolean;
 }
 
-export const SmileMirrorGame: React.FC<SmileMirrorGameProps> = ({ onComplete, onBack }) => {
+export const SmileMirrorGame: React.FC<SmileMirrorGameProps> = ({ onComplete }) => {
   const [currentChallenge, setCurrentChallenge] = useState<SmileChallenge | null>(null);
   const [completedChallenges, setCompletedChallenges] = useState<string[]>([]);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -101,7 +99,6 @@ export const SmileMirrorGame: React.FC<SmileMirrorGameProps> = ({ onComplete, on
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 p-4 sm:p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Smile Mirror</h2>

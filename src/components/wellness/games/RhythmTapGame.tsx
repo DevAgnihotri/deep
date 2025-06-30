@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, RotateCcw, Volume2 } from 'lucide-react';
+import { Play, Pause, RotateCcw, Volume2, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
 
 interface Beat {
   id: string;
@@ -13,8 +12,8 @@ interface Beat {
 
 interface RhythmTapGameProps {
   onComplete: (score: number) => void;
-  onExit?: () => void;
-  onBack?: () => void;
+  onExit: () => void;
+  onBack: () => void;
 }
 
 export const RhythmTapGame: React.FC<RhythmTapGameProps> = ({ onComplete, onExit, onBack }) => {
@@ -118,11 +117,18 @@ export const RhythmTapGame: React.FC<RhythmTapGameProps> = ({ onComplete, onExit
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-6">
-      {onBack && <BackButton onClick={onBack} />}
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
+            <Button
+              onClick={onBack}
+              variant="outline"
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </Button>
             <div>
               <h2 className="text-3xl font-bold text-gray-800">Rhythm Tapping</h2>
               <p className="text-gray-600">Tap to the beat and boost your energy</p>

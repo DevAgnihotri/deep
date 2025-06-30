@@ -2,11 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, RotateCcw, Music, Zap } from 'lucide-react';
 import { useSoundEffects } from '../../../hooks/useSoundEffects';
-import { BackButton } from '../BackButton';
 
 interface DanceTherapyGameProps {
   onComplete: (score: number) => void;
-  onBack?: () => void;
 }
 
 interface DanceMove {
@@ -17,7 +15,7 @@ interface DanceMove {
   energy: number;
 }
 
-export const DanceTherapyGame: React.FC<DanceTherapyGameProps> = ({ onComplete, onBack }) => {
+export const DanceTherapyGame: React.FC<DanceTherapyGameProps> = ({ onComplete }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentMove, setCurrentMove] = useState<DanceMove | null>(null);
   const [score, setScore] = useState(0);
@@ -97,10 +95,7 @@ export const DanceTherapyGame: React.FC<DanceTherapyGameProps> = ({ onComplete, 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-fuchsia-50 to-pink-50 overflow-hidden">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-      
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 sm:p-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Dance Therapy</h2>

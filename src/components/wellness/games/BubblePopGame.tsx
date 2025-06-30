@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RotateCcw, Timer, Target } from 'lucide-react';
+import { RotateCcw, ArrowLeft, Timer, Target } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { BackButton } from '../BackButton';
 
 interface Bubble {
   id: string;
@@ -16,11 +15,10 @@ interface Bubble {
 
 interface BubblePopGameProps {
   onComplete: (score: number) => void;
-  onExit?: () => void;
-  onBack?: () => void;
+  onExit: () => void;
 }
 
-export const BubblePopGame: React.FC<BubblePopGameProps> = ({ onComplete, onExit, onBack }) => {
+export const BubblePopGame: React.FC<BubblePopGameProps> = ({ onComplete, onExit }) => {
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(60);
@@ -141,6 +139,14 @@ export const BubblePopGame: React.FC<BubblePopGameProps> = ({ onComplete, onExit
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
+            <Button 
+              onClick={onExit}
+              variant="outline" 
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </Button>
           </div>
 
           <div className="text-6xl mb-6">🫧</div>
@@ -173,17 +179,23 @@ export const BubblePopGame: React.FC<BubblePopGameProps> = ({ onComplete, onExit
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 overflow-hidden">
-      {/* Back Button */}
-      {onBack && <BackButton onClick={onBack} />}
-
       {/* Navigation */}
-      <nav className="absolute top-0 left-20 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-blue-100">
+      <nav className="absolute top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-blue-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="text-2xl">🫧</div>
               <span className="font-bold text-xl text-gray-800">Bubble Pop</span>
             </div>
+            
+            <Button 
+              onClick={onExit}
+              variant="outline" 
+              className="flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Exit</span>
+            </Button>
           </div>
         </div>
       </nav>
